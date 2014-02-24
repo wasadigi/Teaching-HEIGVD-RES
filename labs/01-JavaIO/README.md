@@ -85,7 +85,7 @@ H3LLO, THIS IS JUST A T3ST TO CH3CK MY D@T@ CONVERSION PROGR@M.
 
 In the main part of the lab, you will work on a collection of text files and apply transformation to their content. To be able to test your code, you should create a folders tree containing text files. Instead of doing that manually, you can use the [QuotesGenerator](QuotesGenerator) tool written for that purpose. 
 
-Have a look at the [README](QuotesGenerator/README.md) file, follow the instructions, run the tool and generate your test data. Spend some time looking at the code in the [node.js script](/QuotesGenerator/generator.js). You don't need to understand everything in that script, but you should realize that writing a client program that dynamically fetches data from a web service is pretty easy. We will get back to that later in the course.
+Have a look at the [README](QuotesGenerator/README.md) file, follow the instructions, run the tool and generate your test data. Spend some time looking at the code in the [node.js script](QuotesGenerator/generator.js). You don't need to understand everything in that script, but you should realize that writing a client program that dynamically fetches data from a web service is pretty easy. We will get back to that later in the course.
 
 
 ### Task 3: Find a Way To Recursively Traverse the File System (15 minutes)
