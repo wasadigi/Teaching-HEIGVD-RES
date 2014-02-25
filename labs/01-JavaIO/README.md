@@ -12,18 +12,18 @@ The goal of this lab is to **get familiar with some of the Java IO classes and i
 * Learn how to write characters to a data stream (i.e. to a Writer).
 * Learn how to write `FilterWriters` to apply transformation 'on the fly', as characters are written to a wrapped Writer. Learn how to combine several `FilterWriters` (i.e. to combine filters)
 
-## Tasks
+## Specifications
 
-### Task 1: Understand What You Need To Achieve (10 minutes)
 
-* Your goal is to **recursively traverse a portion of your file system**, starting in a specific directory. During this traversal, you will read the content of text files. You will also **apply two basic transformations** to these files and save the result in new files.
+* Your goal is to write an application that **recursively traverses a portion of your file system**, starting in a specific directory. During this traversal, you will read the content of text files. You will also **apply two basic transformations** to these files and **save the result in new files**.
+
+* You will not start from scratch, but use the [FileSystemRobot](FileSystemRobot) project as a starting point.
 
 * In the **first transformation**, you will replace every occurrence of 'a' or 'A' with a '@' character. You will also replace every occurrence of 'e' or 'E' with a '3' character.
 
 * In the **second transformation**, you will simply replace every character with its uppercase value (i.e. 'z' will become 'Z').
 
 * For every processed file named `filename.extension`, you will write the result into a new file name `filename.extension.out`.
-
 
 
 Test data directory **before** running your program:
@@ -80,6 +80,12 @@ Test data file **after** running your program (`a.txt`):
 H3LLO, THIS IS JUST A T3ST TO CH3CK MY D@T@ CONVERSION PROGR@M.
 ```
 
+## Class Diagram for the FileSystemRobot Project
+
+![](Figures/class-diagram.svg)
+
+
+### Task 1: Understand What You Need To Achieve (10 minutes)
 
 ### Task 2: Generate Test Data (15 minutes)
 
