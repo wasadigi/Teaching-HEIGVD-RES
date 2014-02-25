@@ -1,12 +1,29 @@
 # Lab 1: Playing with Java IOs
 
+## Table of Contents
 
-## Introduction
+1. [Introduction](#Introduction)
+2. [Objectives](#Objectives)
+3. [Evaluation](#Evaluation)
+4. [Specifications](#Specifications)
+5. [Class Diagram for the FileSystemRobot Project](#ClassDiagram)
+6. [Tasks](#Tasks)
+    1. [Task 1: Clone This Github Repository on Your Machine (10' to 90')](#Task1)
+    2. [Task 2: Understand What You Need To Achieve (15')](#Task2)
+    3. [Task 3: Generate Test Data (10')](#Task3)
+    4. [Task 4: Find a Way To Recursively Traverse the File System (20')](#Task4)
+    5. [Task 5: Find a Way To Open a Text File and to Read All of its Content (15')](#Task5)
+    6. [Task 6: Find a Way to Write Characters to a Text File (10')](#Task6)
+    7. [Task 7: Make Sure That You Have Understood FilterWriters and the Decorator Pattern (15')](#Task7)
+    8. [Task 8: Put All Pieces Together (30')](#Task8)
+    9. [Task 9: Get Ready for your Demonstration and Presentation (20')](#Task9)
+
+## <a name="Introduction"></a>Introduction
 
 The goal of this lab is to **get familiar with some of the Java IO classes and interfaces**. It will only be a first encounter and we will not have the time to dig into all the details, but will get a feel for what it means to work with **data sources**, **data destinations** and **data streams**. You will also see that it is fairly easy to interact with the **file system** in Java.
 
 
-## Objectives
+## <a name="Objectives"></a>Objectives
 
 * Learn how to use the `File.java` class of the `java.io` package to interact with the file system. 
 * Learn how to programmatically explore the file system, by listing the content of directories and dynamically building file paths.
@@ -15,7 +32,7 @@ The goal of this lab is to **get familiar with some of the Java IO classes and i
 * Learn how to write `FilterWriters` to apply transformation 'on the fly', as characters are written to a wrapped Writer. Learn how to combine several `FilterWriters` (i.e. to combine filters)
 
 
-## Evaluation
+## <a name="Evaluation"></a>Evaluation
 
 * There is **no grade for this lab**. 
 * **No report to write** and submit either.
@@ -24,7 +41,7 @@ The goal of this lab is to **get familiar with some of the Java IO classes and i
   * **Working code in your IDE**. You should be able to walk through the code and explain how you have implemented the various functions. I expect you to run a live demo and to present the results. The demo should be "**end-to-end**", in other words it should start with the generation of the test data files.
   * **A few slides that explain what you have implemented and how**. You should write and use these slides to help you structure your explanations. I would like to see that you have understood the different sub-problems to solve (in order to implement the complete solution). I would also like to see how you have actually solved them.
 
-## Specifications
+## <a name="Specifications"></a>Specifications
 
 * Your goal is to write an application that **recursively traverses a portion of your file system**, starting in a specific directory. During this traversal, you will read the content of text files. You will also **apply two basic transformations** to these files and **save the result in new files**.
 
@@ -91,12 +108,13 @@ Test data file **after** running your program (`a.txt`):
 H3LLO, THIS IS JUST A T3ST TO CH3CK MY D@T@ CONVERSION PROGR@M.
 ```
 
-## Class Diagram for the FileSystemRobot Project
+## <a name="ClassDiagram"></a>Class Diagram for the FileSystemRobot Project
 
 ![](https://rawgithub.com/wasadigi/Teaching-HEIGVD-RES/master/labs/01-JavaIO/Figures/class-diagram.svg)
 
+## <a name="Tasks"></a>Tasks
 
-### Task 1: Clone this Github Repository and Open the FileSystemRobot in Netbeans
+### <a name="Task1"></a>Task 1: Clone This Github Repository on Your Machine (10' to 90')
 
 We will use **git** and **Github** as a way to share material for the course. You will most likey use **git** and **Github** ***a lot*** in your school projects and most imporantly **in your future job**.
 
@@ -117,7 +135,15 @@ To clone the **Github repository** on your local machine, start by setting up **
 git clone git@github.com:wasadigi/Teaching-HEIGVD-RES.git
 ```
 
-This should create a clone of my repository on your local machine. You will never push modifications to my repository. However, when I add or edit content, you will be able to get it by pulling commits from the origin master. You will do that by issuing the following command:
+This should create a clone of my repository on your local machine. If everything worked ok, then you should be able to explore the course content. You should be able to drill down to the directory containing material for this lab with the following command:
+
+```
+cd ./Teaching-HEIGVD-RES/labs/01-JavaIO/
+```
+
+Try to launch Netbeans and to open the project located in `./Teaching-HEIGVD-RES/labs/01-JavaIO/QuotesGenerator`. You should be able to compile and run the Java project. Don't be surprise if nothing spectacular happens. You will have to implement the magic.
+
+You will never push modifications to my repository. However, when I add or edit content, you will be able to get it by pulling commits from the origin master. You will do that by issuing the following command:
 
 ```
 git pull origin master
@@ -130,18 +156,19 @@ git pull
 ```
 
 
-### Task 1: Understand What You Need To Achieve (15 minutes)
+### <a name="Task2"></a>Task 2: Understand What You Need To Achieve (15')
 
-Read the specifications very carefully. Study the class diagram and make sure that you understand the overall structure of the program. If you don't understand something, speak up!
+Read the specifications very carefully. Study the class diagram and make sure that you understand the overall structure of the program. **If you don't understand something, speak up!**
 
-### Task 2: Generate Test Data (15 minutes)
+
+### <a name="Task3"></a>Task 3: Generate Test Data (10')
 
 In the main part of the lab, you will work on a collection of text files and apply transformation to their content. To be able to test your code, you should create a folders tree containing text files. Instead of doing that manually, you can use the [QuotesGenerator](QuotesGenerator) tool written for that purpose. 
 
 Have a look at the [README](QuotesGenerator/README.md) file, follow the instructions, run the tool and generate your test data. Spend some time looking at the code in the [node.js script](QuotesGenerator/generator.js). You don't need to understand everything in that script, but you should realize that writing a client program that dynamically fetches data from a web service is pretty easy. We will get back to that later in the course.
 
 
-### Task 3: Find a Way To Recursively Traverse the File System (20 minutes)
+### <a name="Task4"></a>Task 4: Find a Way To Recursively Traverse the File System (20')
 
 Have a look at the [File.java](http://docs.oracle.com/javase/7/docs/api/java/io/File.html) javadoc documentation. Spend some time browsing through the [java tutorial](http://docs.oracle.com/javase/tutorial/essential/io/fileio.html). If you think about it, what you need is:
 
@@ -149,19 +176,19 @@ Have a look at the [File.java](http://docs.oracle.com/javase/7/docs/api/java/io/
 * a way to check if a path corresponds to a file or to a directory
 * a way to combine these two mechanisms in a tree traversal algorithm
 
-### Task 4: Find a Way To Open a Text File and to Read All of its Content (15 minutes)
+### <a name="Task5"></a>Task 5: Find a Way To Open a Text File and to Read All of its Content (15')
 
 Here, you will need to use the [FileReader.java](http://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html) class. You will need to write a loop to read chunks of characters from the data stream. That should be very easy, especially if you read the [java tutorial](http://docs.oracle.com/javase/tutorial/essential/io/charstreams.html).
 
-### Task 5: Find a Way to Write Characters to a Text File (15 minutes)
+### <a name="Task6"></a>Task 6: Find a Way to Write Characters to a Text File (10')
 
 That is something that you will be able to the with the [FileWriter.java](http://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.java) class. Again, there are examples in the [java tutorial](http://docs.oracle.com/javase/tutorial/essential/io/charstreams.html), so it should be a piece of cake.
 
-### Task : Make Sure That You Have Understood FilterWriters and the Decorator Pattern ()
+### <a name="Task7"></a>Task 7: Make Sure That You Have Understood FilterWriters and the Decorator Pattern (15')
 
-Go back to the course material, read the 
+Go back to the course material, read the documentation. Study the class diagram and make sure that you understand how FilterWriters are supposed to work and what methods you need to override.
 
-### Task : Put All Pieces Together (60 minutes)
+### <a name="Task8"></a>Task 8: Put All Pieces Together (30')
 
 1. Read and understand what the `FileSystemRobot.java` class is doing. Open all of the other files and read the comments. Make sure that you understand how the classes are supposed to collaborate. **If it is not crystal clear for you, speak up!**
 1. Implement the `DFSFileSystemExplorer.java` class. This is where you will implement the recursive file system traversal algorithm.
@@ -170,3 +197,7 @@ Go back to the course material, read the
 1. Implement the `ScramblerFilterWriter.java` class. This is where you will transform some of the characters to '@' and '3' before writing them to the wrapped `Writer`.
 1. Run the program on the test data you generated at the beginning of the lab.
 1. Check the results.
+
+### <a name="Task"></a>Task 9: Get Ready for your Demonstration and Presentation (20')
+
+**Remember**: some of you will be asked to present their work and results in front of the class next Monday. Make sure that you have a working demo, that you are able to walk us through your code and to explain what you have done. Prepare some slides to introduce and structure your presentation.
