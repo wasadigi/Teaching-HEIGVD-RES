@@ -82,7 +82,7 @@ H3LLO, THIS IS JUST A T3ST TO CH3CK MY D@T@ CONVERSION PROGR@M.
 
 ## Class Diagram for the FileSystemRobot Project
 
-![](Figures/class-diagram.svg)
+![](https://rawgithub.com/wasadigi/Teaching-HEIGVD-RES/master/labs/01-JavaIO/Figures/class-diagram.svg)
 
 
 ### Task 1: Understand What You Need To Achieve (10 minutes)
