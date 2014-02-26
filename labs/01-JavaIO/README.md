@@ -22,6 +22,7 @@
 
 The goal of this lab is to **get familiar with some of the Java IO classes and interfaces**. It will only be a first encounter and we will not have the time to dig into all the details, but will get a feel for what it means to work with **data sources**, **data destinations** and **data streams**. You will also see that it is fairly easy to interact with the **file system** in Java.
 
+**Note**: in this lab, you will install software that you reuse for other labs in the future. It is one of the reasons why I am asking you to do the work on your own. In other words, I expect you to work individually and to do all manipulations on your machines.
 
 ## <a name="Objectives"></a>Objectives
 
