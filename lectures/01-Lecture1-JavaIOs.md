@@ -6,10 +6,10 @@
 2. [Lecture](#Lecture)
    1. [A Univeral API](#UniversalAPI)
    2. [Sources, Sinks and Streams](#SourcesSinksAndStreams)
-   3. [A First Example: File Duplicator](#FileDuplicator)
+   3. [A Simple Example: File Duplicator](#FileDuplicator)
    4. [Binary- vs Character-Oriented IOs](#BinaryVsCharacterIOs)
-   5. [Performance and Buffering](#PerformanceAndBuffering)
-   6. [The Mighty Filter Classes](#MightyFilterClasses)
+   5. [The Mighty Filter Classes](#MightyFilterClasses)
+   6. [Performance and Buffering](#PerformanceAndBuffering)
 3. [Resources](#Resources)
    1. [MUST read](#ResourcesMustRead)
    2. [Additional Resources](#ResourcesAdditional)
@@ -17,9 +17,6 @@
 
 
 [![](images/01/io.jpg)](http://www.flickr.com/photos/bobbyzero/2300986336/)
-
-
-
 
 ## <a name="Objectives"></a>Objectives
 
@@ -41,7 +38,7 @@ More specifically, here are the objectives of the lecture:
 
 * Understand that it is possible to create **filter chains**, by wrapping `Writers` into `Writers` into `Writers` into `Writers` into `Writers`, with custom logic added at each level.
 
-* Understand that the `BufferedReader`, `BufferedWriter`, `BufferedInputStream` and `BufferedOutputStream` classes
+* Understand that the `BufferedReader`, `BufferedWriter`, `BufferedInputStream` and `BufferedOutputStream` classes use this mechanism. You should be able to explain how buffered IOs work and why they are important from a **performance** point of view.
 
 
 
@@ -50,7 +47,7 @@ More specifically, here are the objectives of the lecture:
 ## <a name="Lecture"></a>Lecture
 
 
-### <a name="UniversalApi"></a>A Universal API
+### <a name="UniversalApi"></a>1. A Universal API
 
 In any programming language, dealing with IOs means **dealing with an exchange of data**. This can mean different things, for example:
 
@@ -66,7 +63,9 @@ Instead of having a different API, in other words different abstractions, classe
 
 > At the end of the day, whether you are "talking" to a file, to a network endpoint or to a process does not matter. You are always doing the same thing: reading and/or writing bytes or characters. The Java IO API is the toolbox that you need for that purpose.
 
-### <a name="SourcesSinksAndStreams"></a>Sources, Sinks and Streams
+[![](images/01/plugs.jpg)](http://www.flickr.com/photos/wikidave/7282386798/)
+
+### <a name="SourcesSinksAndStreams"></a>2. Sources, Sinks and Streams
 
 If you think about it, every situation where you need to deal with IOs can be described with 3 abstractions: 
 
@@ -78,7 +77,7 @@ If you think about it, every situation where you need to deal with IOs can be de
 
 > The beauty of the Java IO API, and what makes it universal, is that once you have a stream, you always use it in the same way. Whether it is connected to a file source, a network source or a memoy source, you are using the same class and have access to the same methods. Similarly, if your stream is connected to a file sink, to a network sink or to a memory sink, you always write bytes to the stream in the same way.
 
-#### Reading Data From a Source
+#### 2.1. Reading Data From a Source
 
 [![](images/01/robinet.jpg)](http://www.flickr.com/photos/chagiajose/5382140863/)
 
@@ -92,7 +91,7 @@ Concretely, when your program wants to read data from a source, it will:
 
 4. **Close the stream**, by using the `close()` method defined in the `InputStream` class. 
 
-#### Writing Data To a Sink
+#### 2.2. Writing Data To a Sink
 
 [![](images/01/sink.jpg)](http://www.flickr.com/photos/58271172@N00/3115329519/)
 
@@ -106,7 +105,37 @@ Similarly, when your program wants to write data from a source, it will:
 
 4. **Close the stream**, by using the `close()` method defined in the `OutputStream` class. 
 
-### <a name="FileDuplicator"></a>A First Example: File Duplicator
+
+#### 2.3. Design Your Code to Be Universal
+
+When you design your own classes and methods, make sure that you keep the spirit of the Universal API. As a rule of thumb, **pass streams and not sources as method parameters**. Compare the following two methods:
+
+```
+/**
+ * This interface will work only for data sources on the file system. In the
+ * method implementation, I would need to create a FileInputStream from f and
+ * read bytes from it.
+ */
+ public interface IPoorlyDesignedService {
+  public void readAndProcessBinaryDataFromFile(File f);
+}
+```
+
+```
+/**
+ * This interface is much better. The client using the service has a bit more
+ * responsibility (and work). It is up to the client to select a data source
+ * (which can still be a file, but can be something else). The method implementation
+ * will ignore where it is reading bytes from. Nice for reuse, nice for testing.
+ */
+public interface INicelyDesignedService {
+  public void readAndProcessBinaryData(InputStream is);
+}
+```
+
+
+
+### <a name="FileDuplicator"></a>3. A Simple Example: The File Duplicator
 
 To illustrate these basic concepts, let us consider a very simple example. The code below shows that we have implemented a class named `FileDuplicator`. Its responsibility should be easy to guess from his name. It provides a method that, when invoked by a client, copies the content of a file into another file.
 
@@ -139,17 +168,25 @@ import java.io.IOException;
 public class FileDuplicator {
 		
 	public void duplicate(String inputFileName, String outputFileName) throws IOException {
+
+	    // This is my data source
 		File inputFile = new File(inputFileName);
+		
+		// This is my data sink
 		File outputFile = new File(outputFileName);
 		
+		// These are 2 streams, 1 for reading and 1 for writing bytes
 		FileInputStream fis = new FileInputStream(inputFile);
 		FileOutputStream fos = new FileOutputStream(outputFile);
 		
 		int b;
+		// I read all bytes from the input stream in a loop
 		while ( (b = fis.read()) != -1 ) {
+		    // I write each of the read bytes to the output stream
 			fos.write(b);
 		}
 		
+		// Important: when dealing with IOs, always close and clean-up resources
 		fis.close();
 		fos.close();
 	}
@@ -159,7 +196,7 @@ public class FileDuplicator {
 
 
 
-### <a name="BinaryVsCharacterIOs"></a>Binary- vs Character-Oriented IOs
+### <a name="BinaryVsCharacterIOs"></a>4. Binary- vs Character-Oriented IOs
 
 If you browse through the [java.io](http://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html) package, you will notice two parallel class hierarchies:
 
@@ -191,11 +228,7 @@ Unicode is actually not a character encoding system. When you have a code point,
 
 Sounds complicated? Well, it is a bit. Have a look at this [page](http://www.fileformat.info/info/unicode/char/42/index.htm). It will show you how the same character is represented in Unicode and in different encoding systems.
 
-### <a name="PerformanceAndBuffering"></a>Performance and Buffering
-
-### <a name="ShitHappens"></a>Shit Happens: Dealing with IOExceptions
-
-### <a name="MightyFilterClasses"></a>The Mighty Filter Classes
+### <a name="MightyFilterClasses"></a>5. The Mighty Filter Classes
 
 If you browse the `java.io` package, you will encounter 4 interesting classes: `FilterInputStream`, `FilterOutputStream`, `FilterReader` and `FilterWriter`. When you think about these classes, think about the **Decorator design pattern**. Think about **matriochkas** (poupées russes).
 
@@ -206,6 +239,61 @@ The role of these classes is to allow you to add behavior to a stream, in other 
 * The FilterWriter class is what you need to solve your problem. Here is what you would use it:
   * Firstly, you would create a class named `CensorshipWriter` that extends `FilterWriter`.
   * Secondly, you would override the various `write()` methods implemented by the `FilterWriter` class. This is where you would get rid of the the hated characters, before calling the `write()` method in the `super` class.
+
+### <a name="PerformanceAndBuffering"></a>6. Performance and Buffering
+
+In the Java IO, 4 classes use this filtering mechanism:
+
+* For binary data, `BufferedInputStream` and `BufferedOutputStream` extend `FilterInputStream`, respectively `FilterOutputStream`.
+
+* For character data, `BufferedReader` and `BufferedWriter` extend `FilterReader` and `FilterWriter`.
+
+Why should you use these classes and what are they doing? Think about what is happening if you write a method that **consumes a binary stream connected to a file, byte by byte**. When you call the `read()` method, you are not really sure what is happening at a low level (because that is up to the JRE implementation, to the operating system, to the disk driver, etc.). To exagerate the situation, imagine that every single call the method would actually traverse all the layers and result in a hard disk operation. You realize that it is a lot of work, just to read a character. You also realize that you will be wasting a lot of time, because **you will have to pay the overhead for every read operation**.
+
+To improve the situation, a common technique is to use **buffering** (and this can be done at each layer). Simply stated, when you use buffering when reading data, you apply the following principle: 
+
+>"If I am asked to read 1 character, then I will read 10. I will return the first one and keep the 9 remaining for later. If I am asked once more to read 1 character, then I will already have it and be able to respond quickly, without any effort."
+
+**As an analogy, think about what you typically do when you drink beer**:
+
+* If you are not organized, then every time that you feel thirsty, you will need to get dressed, walk to the shop, buy a can of beer, walk back home, sit down and enjoy your beer. Thirsty again? No problem, you will just have to spend another 40 minutes to go through the same process.
+
+* On the other hand, if you are a bit more organized, when you go to the store the first time, you will directly buy a pack of 24 cans. Going back home, you will store 23 cans in your basement and enjoy the 24th one. Thirsty again? Easy, and now it will only take you 10 minutes to visit your basement and get a new can.
+
+* If you are really very well organized, then you will do beer-buffering at different levels. Each time you need to visit your basement, you will not only get 1 can. You will directly get 5 and store 4 of them in your fridge. Thirsty again? Cool, you are now down from 10 minutes to 2 minutes before you can enjoy your drink.
+
+That is pretty much what the `BufferedXXX` classes are doing. They manage an internal buffer for you (you don't really see or interact with this buffer), which means that even if you write a loop that reads data byte by byte, then each byte is read from the buffer and not from the original source. In order to use a BufferedInputStream, you wrap one around an existing source:
+
+```
+public void processInputStream(InputStream is) {
+
+  // I don't know to which source "is" is connected. It is also possible that is is already
+  // a chain of several filters wrapping each other. I don't really care, what I want is to
+  // make sure that I read bytes in an efficient way.
+  
+  // So, here I decorate "is" by wrapping a BufferedInputStream around it
+  BufferedInputStream bis = new BufferedInputStream(is);
+  
+  // When I make this call, then "bis" will read a bunch of bytes, send me one and keep the
+  // others in his buffer
+  int b = bis.read();
+  
+  // When I make this call, I will get my byte faster because it will come straight from the
+  // buffer managed by "bis"
+  b = bis.read();
+}
+```
+
+Using a `BufferedOutputStream` or a `BufferedWriter` to send data towards a sink follows the same logic. **There is however one more thing to be aware of**. Since the bytes or characters that you produce transit via a buffer, there will be a delay until they are actually pushed towards the sink. Sometimes, you will want to influence this delay and to push content ***right now***. That is something that you can do with the `flush()` method defined in the classes.
+
+### <a name="ShitHappens"></a>7. Shit Happens: Dealing with IOExceptions
+
+When dealing with IOs, you will be interacting with external systems and components and you will quickly realize that **the environment is unreliable and that many things can go wrong**. Think about reading a corrupted file, think about a faulty hard drive. Think about loosing your network connection or seeing a remote client suddently cut the connection while you are reading the data it is sending you.
+
+**You have to detect and react to these error conditions**. The Java IO API gives you a mandate to do so: many methods in the API declare that they might throw exceptions that extend the `IOException` class (`FileNotFoundException`, `SocketException`, `ZipException`, `FileSystemException`, `CharConversionException` are some of the many subclasses).
+
+One important thing that you will have to do, is to **close the streams when you are done reading or writing data**. Since errors can happen while you are working with the stream, make sure that you close the streams in the `finally` clause. Check the **additional resources** list for two interesting links on that topic.
+
 
 ## <a name="Resources"></a>Resources</a>
 
@@ -223,7 +311,7 @@ The role of these classes is to allow you to add behavior to a stream, in other 
 
 * A tutorial for the Java NIO API: <http://tutorials.jenkov.com/java-nio/index.html>
 
-
+* Two articles about IO Exception handling and related design guidelines: <http://tutorials.jenkov.com/java-io/io-exception-handling.html> and <http://tutorials.jenkov.com/java-exception-handling/exception-handling-templates.html>.
 
 ## <a name="Exam"></a>What should I know for the test and the exam?
 
