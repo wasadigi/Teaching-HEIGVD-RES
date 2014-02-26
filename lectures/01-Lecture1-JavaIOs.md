@@ -18,6 +18,7 @@
 
 [![](images/01/io.jpg)](http://www.flickr.com/photos/bobbyzero/2300986336/)
 
+
 ## <a name="Objectives"></a>Objectives
 
 The goal of this lecture is to give an **overview of IO programming in Java** and to see how classes in the `java.io` package can be used to read and write files. 
@@ -227,6 +228,9 @@ In order to deal with internationalization, Java decided to use the **Unicode** 
 Unicode is actually not a character encoding system. When you have a code point, you still need to decide how you are going to encode it as a series of bits. Sure, you could use 16 bits (4 bytes for each of the 4 hexadecimal values making up the code point) for each encoded character. But in general, that would be a waste. Think of a text written in english, with only latin characters. Since the code points of all characters are below 255, 
 
 Sounds complicated? Well, it is a bit. Have a look at this [page](http://www.fileformat.info/info/unicode/char/42/index.htm). It will show you how the same character is represented in Unicode and in different encoding systems.
+
+[![](images/01/unicode.jpg)](http://www.flickr.com/photos/svensson/40467662/)
+
 
 ### <a name="MightyFilterClasses"></a>5. The Mighty Filter Classes
 
