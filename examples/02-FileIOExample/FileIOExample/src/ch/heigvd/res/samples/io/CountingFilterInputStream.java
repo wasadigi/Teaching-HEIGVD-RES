@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- *
+ * This class demonstrates how to write custom FilterInputStream subclasses.
+ * The filter does not modify the bytes when it reads them, but it counts them.
+ * This makes it possible for the client to query the number of read bytes
+ * afterwards, using the appropriate getter method.
+ * 
  * @author Olivier Liechti
  */
 public class CountingFilterInputStream extends FilterInputStream {

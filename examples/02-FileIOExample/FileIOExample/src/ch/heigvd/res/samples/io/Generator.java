@@ -7,7 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * This class provides a method to generate a test file, by producing random
+ * bytes and writing them to a FileOutputStream instance.
+ * 
  * @author Olivier Liechti
  */
 public class Generator {
