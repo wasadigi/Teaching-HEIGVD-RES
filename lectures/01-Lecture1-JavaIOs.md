@@ -10,10 +10,11 @@
    4. [Binary- vs Character-Oriented IOs](#BinaryVsCharacterIOs)
    5. [The Mighty Filter Classes](#MightyFilterClasses)
    6. [Performance and Buffering](#PerformanceAndBuffering)
+   7. [Shit Happens… Dealing with IO Exceptions](#ShitHappens)
 3. [Resources](#Resources)
    1. [MUST read](#ResourcesMustRead)
    2. [Additional Resources](#ResourcesAdditional)
-4. [What should I know for the test and the exam?](#Exam)
+4. [What Should I Know For The Test And The Exam?](#Exam)
 
 
 [![](images/01/io.jpg)](http://www.flickr.com/photos/bobbyzero/2300986336/)
@@ -48,7 +49,9 @@ More specifically, here are the objectives of the lecture:
 ## <a name="Lecture"></a>Lecture
 
 
-### <a name="UniversalApi"></a>1. A Universal API
+### <a name="UniversalAPI"></a>1. A Universal API
+
+[![](images/01/plugs.jpg)](http://www.flickr.com/photos/wikidave/7282386798/)
 
 In any programming language, dealing with IOs means **dealing with an exchange of data**. This can mean different things, for example:
 
@@ -64,7 +67,6 @@ Instead of having a different API, in other words different abstractions, classe
 
 > At the end of the day, whether you are "talking" to a file, to a network endpoint or to a process does not matter. You are always doing the same thing: reading and/or writing bytes or characters. The Java IO API is the toolbox that you need for that purpose.
 
-[![](images/01/plugs.jpg)](http://www.flickr.com/photos/wikidave/7282386798/)
 
 ### <a name="SourcesSinksAndStreams"></a>2. Sources, Sinks and Streams
 
@@ -135,7 +137,6 @@ public interface INicelyDesignedService {
 ```
 
 
-
 ### <a name="FileDuplicator"></a>3. A Simple Example: The File Duplicator
 
 To illustrate these basic concepts, let us consider a very simple example. The code below shows that we have implemented a class named `FileDuplicator`. Its responsibility should be easy to guess from his name. It provides a method that, when invoked by a client, copies the content of a file into another file.
@@ -199,11 +200,11 @@ public class FileDuplicator {
 
 ### <a name="BinaryVsCharacterIOs"></a>4. Binary- vs Character-Oriented IOs
 
+[![](images/01/binary-sweets.jpg)](http://www.flickr.com/photos/dade_f/7110106731/)
+
 If you browse through the [java.io](http://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html) package, you will notice two parallel class hierarchies:
 
 * On one hand, you will see a set of classes extending the `InputStream` and `OutputStream` abstract classes. These classes are used to read and write **binary data**. In other words, if you are writing an application that deals with images or sounds, then you will be happy to use these classes that will **process raw data**, **without doing any conversion**.
-
-[![](images/01/binary-sweets.jpg)](http://www.flickr.com/photos/dade_f/7110106731/)
 
 * On the other hand, you will see a set of classes extending the `Reader` and `Writer` abstract classes. These are used to read and write characters. In other words, if you are writing an application that deals with text data, then you will be happy to use these classes that will perform **conversions between raw data (bytes) and characters (in a particular encoding)**.
 
@@ -234,6 +235,9 @@ Sounds complicated? Well, it is a bit. Have a look at this [page](http://www.fil
 
 ### <a name="MightyFilterClasses"></a>5. The Mighty Filter Classes
 
+
+[![](images/01/matrioska.jpg)](http://www.flickr.com/photos/agfrg/4693609597/)
+
 If you browse the `java.io` package, you will encounter 4 interesting classes: `FilterInputStream`, `FilterOutputStream`, `FilterReader` and `FilterWriter`. When you think about these classes, think about the **Decorator design pattern**. Think about **matriochkas** (poupées russes).
 
 The role of these classes is to allow you to add behavior to a stream, in other words to do some processing on the bytes or characters being read or written. To illustrate this idea, let us consider an example:
@@ -245,6 +249,8 @@ The role of these classes is to allow you to add behavior to a stream, in other 
   * Secondly, you would override the various `write()` methods implemented by the `FilterWriter` class. This is where you would get rid of the the hated characters, before calling the `write()` method in the `super` class.
 
 ### <a name="PerformanceAndBuffering"></a>6. Performance and Buffering
+
+[![](images/01/car.jpg)](http://www.flickr.com/photos/fireflite59/6129719816/)
 
 In the Java IO, 4 classes use this filtering mechanism:
 
@@ -290,7 +296,9 @@ public void processInputStream(InputStream is) {
 
 Using a `BufferedOutputStream` or a `BufferedWriter` to send data towards a sink follows the same logic. **There is however one more thing to be aware of**. Since the bytes or characters that you produce transit via a buffer, there will be a delay until they are actually pushed towards the sink. Sometimes, you will want to influence this delay and to push content ***right now***. That is something that you can do with the `flush()` method defined in the classes.
 
-### <a name="ShitHappens"></a>7. Shit Happens: Dealing with IOExceptions
+### <a name="ShitHappens"></a>7. Shit Happens: Dealing with IO Exceptions
+
+[![](images/01/cutcable.jpg)](http://www.flickr.com/photos/lanier67/5661780397/)
 
 When dealing with IOs, you will be interacting with external systems and components and you will quickly realize that **the environment is unreliable and that many things can go wrong**. Think about reading a corrupted file, think about a faulty hard drive. Think about loosing your network connection or seeing a remote client suddently cut the connection while you are reading the data it is sending you.
 
@@ -309,6 +317,8 @@ One important thing that you will have to do, is to **close the streams when you
 
 * A interactive site for querying and browsing Unicode characters and getting their representations in various encodings (UTF-8, UTF-16, etc.) : <http://www.fileformat.info/info/unicode>
 
+* A description of the Decorator design pattern: <http://en.wikipedia.org/wiki/Decorator_pattern>
+
 ### <a name="ResourcesAdditional"></a>Additional resources
 
 * Reference for the Java NIO API: <http://docs.oracle.com/javase/7/docs/api/java/nio/package-summary.html>
@@ -317,7 +327,10 @@ One important thing that you will have to do, is to **close the streams when you
 
 * Two articles about IO Exception handling and related design guidelines: <http://tutorials.jenkov.com/java-io/io-exception-handling.html> and <http://tutorials.jenkov.com/java-exception-handling/exception-handling-templates.html>.
 
-## <a name="Exam"></a>What should I know for the test and the exam?
+* A list of supported character encodings for Java SE 7: <http://docs.oracle.com/javase/7/docs/technotes/guides/intl/encoding.doc.html>
+
+
+## <a name="Exam"></a>What Should I Know For The Test and The Exam?
 
 Here is a **non-exhausive list of questions** that you can expect in the written tests and exams:
 
