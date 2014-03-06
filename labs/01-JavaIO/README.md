@@ -142,7 +142,7 @@ This should create a clone of my repository on your local machine. If everything
 cd ./Teaching-HEIGVD-RES/labs/01-JavaIO/
 ```
 
-Try to launch Netbeans and to open the project located in `./Teaching-HEIGVD-RES/labs/01-JavaIO/QuotesGenerator`. You should be able to compile and run the Java project. Don't be surprise if nothing spectacular happens. You will have to implement the magic.
+Try to launch Netbeans and to open the project located in `./Teaching-HEIGVD-RES/labs/01-JavaIO/FileSystemRobot`. You should be able to compile and run the Java project. Don't be surprise if nothing spectacular happens. You will have to implement the magic.
 
 You will never push modifications to my repository. However, when I add or edit content, you will be able to get it by pulling commits from the origin master. You will do that by issuing the following command:
 
