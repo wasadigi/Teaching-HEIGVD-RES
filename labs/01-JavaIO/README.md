@@ -113,6 +113,8 @@ H3LLO, THIS IS JUST A T3ST TO CH3CK MY D@T@ CONVERSION PROGR@M.
 
 ![](https://rawgithub.com/wasadigi/Teaching-HEIGVD-RES/master/labs/01-JavaIO/Figures/class-diagram.svg)
 
+A PNG version is available [here](Figures/class-diagram.png).
+
 ## <a name="Tasks"></a>Tasks
 
 ### <a name="Task1"></a>Task 1: Clone This Github Repository on Your Machine (10' to 90')
