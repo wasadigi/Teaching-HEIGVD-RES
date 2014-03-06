@@ -36,7 +36,7 @@ public class BufferedIOBenchmark {
 		BlockByBlockWithBufferedStream
 	};
 
-	final static String FILENAME_PREFIX = "/tmp/test-data"; // we will write and read test files at this location
+	final static String FILENAME_PREFIX = "test-data"; // we will write and read test files at this location
 	final static long NUMBER_OF_BYTES_TO_WRITE = 1024 * 1024 * 10; // we will write and read 10 MB files
 
 	
@@ -52,7 +52,7 @@ public class BufferedIOBenchmark {
 		OutputStream os = null;
 		try {
 			// Let's connect our stream to a file data sink
-			os = new FileOutputStream(FILENAME_PREFIX + "-" + ioStrategy + ".bin");
+			os = new FileOutputStream(FILENAME_PREFIX + "-" + ioStrategy + "-" + blockSize + ".bin");
 
 			// If the strategy dictates to use a buffered stream, then let's wrap one around our file output stream
 			if ((ioStrategy == IOStrategy.BlockByBlockWithBufferedStream) || (ioStrategy == IOStrategy.ByteByByteWithBufferedStream)) {
@@ -65,14 +65,14 @@ public class BufferedIOBenchmark {
 			// We are done, so we only have to close the output stream
 			os.close();
 		} catch (IOException ex) {
-			Logger.getLogger(BufferedIOBenchmark.class.getName()).log(Level.SEVERE, null, ex);
+			LOG.log(Level.SEVERE, ex.getMessage(), ex);
 		} finally {
 			try {
 				if (os != null) {
 					os.close();
 				}
 			} catch (IOException ex) {
-				Logger.getLogger(BufferedIOBenchmark.class.getName()).log(Level.SEVERE, null, ex);
+				LOG.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
 		LOG.log(Level.INFO, "  > Done in {0} ms.", Timer.takeTime());
@@ -127,7 +127,7 @@ public class BufferedIOBenchmark {
 		InputStream is = null;
 		try {
 			// Let's connect our stream to a file data sink
-			is = new FileInputStream(FILENAME_PREFIX + "-" + ioStrategy);
+			is = new FileInputStream(FILENAME_PREFIX + "-" + ioStrategy + "-" + blockSize + ".bin");
 
 			// If the strategy dictates to use a buffered stream, then let's wrap one around our file input stream
 			if ((ioStrategy == IOStrategy.BlockByBlockWithBufferedStream) || (ioStrategy == IOStrategy.ByteByByteWithBufferedStream)) {
@@ -140,14 +140,14 @@ public class BufferedIOBenchmark {
 			// We are done, so we only have to close the input stream
 			is.close();
 		} catch (IOException ex) {
-			Logger.getLogger(BufferedIOBenchmark.class.getName()).log(Level.SEVERE, null, ex);
+			LOG.log(Level.SEVERE, ex.getMessage(), ex);
 		} finally {
 			try {
 				if (is != null) {
 					is.close();
 				}
 			} catch (IOException ex) {
-				Logger.getLogger(BufferedIOBenchmark.class.getName()).log(Level.SEVERE, null, ex);
+				LOG.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
 		LOG.log(Level.INFO, "  > Done in {0} ms.", Timer.takeTime());
