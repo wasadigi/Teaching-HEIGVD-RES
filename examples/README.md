@@ -26,10 +26,21 @@ A Java project that shows how to use character encodings in Java. It shows that 
 
 **Keywords**: lecture 2, java, io, TCP, server
 
-A very simple example of TCP server. When the server starts, it binds a server socket on any of the available network interfaces and on port 2205. It then waits until one (only one!) client makes a connection request. When the client arrives, the server does not even check if the client sends data. It simply writes thebcurrent time, every second, during 15 seconds. To test the server, simply open a terminal, do a `telnet localhost 2205` and see what you get back. Use Wireshark to have a look at the transmitted TCP segments.
+A very simple example of TCP server. When the server starts, it binds a server socket on any of the available network interfaces and on port 2205. It then waits until one (only one!) client makes a connection request. When the client arrives, the server does not even check if the client sends data. It simply writes the current time, every second, during 15 seconds. To test the server, simply open a terminal, do a `telnet localhost 2205` and see what you get back. Use Wireshark to have a look at the transmitted TCP segments.
 
 ### 05-DumbHttpClient
 
 **Keywords**: lecture 2, java, io, TCP, client
 
-This is not really an HTTP client, but rather a very simple program thatestablishes a TCP connection with a real HTTP server. Once connected, the client sends "garbage" to the server (the client does not send a proper HTTP request that the server would understand). The client then reads the response sent back by the server and logs it onto the console.
+This is not really an HTTP client, but rather a very simple program that establishes a TCP connection with a real HTTP server. Once connected, the client sends "garbage" to the server (the client does not send a proper HTTP request that the server would understand). The client then reads the response sent back by the server and logs it onto the console.
+
+### 06-PresenceApplication
+
+This project contains the code of both the server and the client for a custom application protocol. When the server starts, it listens on port 9907. The server keeps track of connected clients in a data structure (a list). Each time a client connects or disconnects, the other clients are notified.
+
+
+### 07-TcpServers
+
+**Keywords**: lecture 2, java, io, TCP, server, threads, runnable, workers
+
+This example compares two "echo" servers. The first one is single-threaded and is able to process only one client at the time (other clients have to wait until the previous one is done). The second one is multi-threaded
