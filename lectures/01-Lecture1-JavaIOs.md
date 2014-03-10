@@ -43,7 +43,6 @@ More specifically, here are the objectives of the lecture:
 * Understand that the `BufferedReader`, `BufferedWriter`, `BufferedInputStream` and `BufferedOutputStream` classes use this mechanism. You should be able to explain how buffered IOs work and why they are important from a **performance** point of view.
 
 
-
 **Note**: in this course, we only consider the **standard Java IO API**. For specific needs and in particular when writing scalable network servers, another API is available. This API has been named the New IO API, generally referred to as the NIO API.
 
 ## <a name="Lecture"></a>Lecture
@@ -311,7 +310,7 @@ One important thing that you will have to do, is to **close the streams when you
 
 ### <a name="ResourcesMustRead"></a>MUST read
 
-* The Basic I/O Lesson on the Java Tutorial: <http://docs.oracle.com/javase/tutorial/essential/io/index.html>
+* The Basic I/O Lesson on the Java Tutorial: <http://docs.oracle.com/javase/tutorial/essential/io/index.html>. Read and learn the section dedicated to [IO streams](http://docs.oracle.com/javase/tutorial/essential/io/streams.html), and browse through the section dedicated to [file IO](http://docs.oracle.com/javase/tutorial/essential/io/fileio.html).
 
 * A nice, brief introduction to Unicode: <http://wiki.secondlife.com/wiki/Unicode_In_5_Minutes>
 
