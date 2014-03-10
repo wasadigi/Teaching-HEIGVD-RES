@@ -44,3 +44,9 @@ This project contains the code of both the server and the client for a custom ap
 **Keywords**: lecture 2, java, io, TCP, server, threads, runnable, workers
 
 This example compares two "echo" servers. The first one is single-threaded and is able to process only one client at the time (other clients have to wait until the previous one is done). The second one is multi-threaded
+
+### 08-TcpServerNode
+
+**Keywords**: lecture 2, Node.js, io, TCP, server, single-thread, non-blocking, asynchronous, callback
+
+This example implements a simple TCP server, capable of servicing multiple servers with a single process and a single thread. Start it with the `node server.js` command.
