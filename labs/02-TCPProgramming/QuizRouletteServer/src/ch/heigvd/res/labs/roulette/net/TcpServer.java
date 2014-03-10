@@ -20,7 +20,7 @@ public class TcpServer {
 	public void startServer() throws IOException {
 		ServerSocket serverSocket = new ServerSocket(RouletteV1Protocol.DEFAULT_PORT);
 		while (true) {
-			LOG.info("Listing for client connections...");
+			LOG.info("Listing for client connection on " + serverSocket.getLocalSocketAddress());
 			Socket clientSocket = serverSocket.accept();
 			LOG.info("New client has arrived...");
 			ClientWorker worker = new ClientWorker(clientSocket, new RouletteClientHandler(store));
