@@ -64,7 +64,7 @@ After this lab, you should be able to:
 * **The protocol defines the following commands**, which are sent by the clients and processed by the servers as follows:
 
 Command | Processing done by the server       | Response               
-:---:|--------
+:---:|--------|---
 `HELP`    | The server retrieves the commands defined by the protocol version. | `Commands: [HELP, RANDOM, LOAD, INFO, BYE]`
 `RANDOM`    | The server randomly selects one of the students in its store. | `{'fullname' : 'olivier liechti'}`, where `olivier liechti` is the name of the victim.
 `LOAD`    | The server changes the state of the session and starts reading client data line by line until it gets a line with the `ENDOFDATA` string. Every new line is interpreted as the full name of a new student that is added to the data store.  | After receiving the `LOAD` command immediately returns `Send your data [end with ENDOFDATA]`. After receiving `ENDOFDATA`, the server sends back `DATA LOADED`. 
@@ -81,14 +81,14 @@ The version 2 of the Roulette Procol specifies minor modifications, as follows:
 * the protocol defines the following **additional commands**:
 
 Command | Processing done by the server       | Response               
-:---:|--------
+:---:|--------|---
 `CLEAR`    | The server resets the data store by clearing all students | `DATASTORE CLEARED`
 `LIST`    | The server fetches the list of students in the store | `{'students' : [{'fullname' : 'john doe'}, {'fullname' : 'bill smith'}]}`, where the value of students is an array containing all students in the store.
 
 * the protocol **modifies** the following **existing commands** defined in version 1:
 
 Command | Processing done by the server       | Response               
-:---:|--------
+:---:|--------|---
 `LOAD`    | No change in the processing. | `{'status' : 'success', 'number of new students' : 3`}, where 3 is the number of student lines sent by the client.
 `BYE`    | No change in the processing. | `{'status' : 'success', 'number of commands' : 12`}, where 12 is the number of commands sent by the client during the session.
 
