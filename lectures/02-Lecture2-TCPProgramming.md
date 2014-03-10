@@ -49,7 +49,7 @@ When we talk about **client-server programming**, we talk about **using a progra
 
 ### <a name="TCPProtocol"></a>2. The TCP Protocol
 
-In this course,** we assume that you are familiar with the TCP/IP protocol stack**. We assume that you know how IP is used to [exchange packets between hosts in interconnected networks](http://www.tcpipguide.com/free/t_IPFunctions.htm) and how TCP adds [multiplexing/demultiplexing](http://www.tcpipguide.com/free/t_TCPIPProcessesMultiplexingandClientServerApplicati.htm) and [reliability](http://www.tcpipguide.com/free/t_TCPReliabilityandFlowControlFeaturesandProtocolMod.htm) on top of IP. We also assume that you know how TCP defines what needs to be done in order to [establish and terminate a connection](http://www.tcpipguide.com/free/t_TCPBasicOperationConnectionEstablishmentManagement.htm) between a **caller** and a **callee**.
+In this course, **we assume that you are familiar with the TCP/IP protocol stack**. We assume that you know how IP is used to [exchange packets between hosts in interconnected networks](http://www.tcpipguide.com/free/t_IPFunctions.htm) and how TCP adds [multiplexing/demultiplexing](http://www.tcpipguide.com/free/t_TCPIPProcessesMultiplexingandClientServerApplicati.htm) and [reliability](http://www.tcpipguide.com/free/t_TCPReliabilityandFlowControlFeaturesandProtocolMod.htm) on top of IP. We also assume that you know how TCP defines what needs to be done in order to [establish and terminate a connection](http://www.tcpipguide.com/free/t_TCPBasicOperationConnectionEstablishmentManagement.htm) between a **caller** and a **callee**.
 
 [![](images/02/telephone.jpg)](http://www.cdandlp.com/item/1/44706-130112-0-1-0/115493154/claude-francois-le-telephone-pleure.html)
 
@@ -497,6 +497,8 @@ node server.js
 * [Beej's Guide To Network Programming](http://www.beej.us/guide/bgnet/output/html/multipage/index.html), which a great resource if you want to use the Socket API in C. 
 
 * A [nice course](http://www.cs.dartmouth.edu/~campbell/cs50/socketprogramming.html) about network programming with the Socket API in C. 
+
+* An example for a [simple TCP server](http://www.gnu.org/software/libc/manual/html_node/Server-Example.html) that uses non-blocking IOs and multiplexing with the `select()` system call.
 
 * A [presentation](http://fr.slideshare.net/gncvalente/whats-so-special-about-nodejs
 ), with embedded videos, which introduces Nodes.js, talks about asynchronous IOs and about the C libraries used by Nodes.js. The presentation also has two interesting slides that compare apache (using threads) and nginx (using an event loop). Another [presentation](http://fr.slideshare.net/marcusf/nonblocking-io-event-loops-and-nodejs) on the same topic.
