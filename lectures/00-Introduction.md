@@ -44,7 +44,7 @@ In **Part 3**, we will look at several **other application-level protocols**. We
 Week | Date       | Lecture             | Lab                 
 :---:|------------|---------------------|--------
 1    | 03.03.2014 | [Introduction to Java IOs](./01-Lecture1-JavaIOs.md)   | [Playing with Java IOs](../labs/01-JavaIO)
-2    | 10.03.2014 | TCP programming     | Implement a TCP client and a TCP server
+2    | 10.03.2014 | [TCP programming](./02-Lecture2-TCPProgramming.md)     | [Implement a TCP client and a TCP server](../labs/02-TCPProgramming)
 3    | 17.03.2014 | UDP programming     | Implement a UDP client and a UDP server
 4    | 24.03.2014 | Specifying an application protocol  | Specify your own protocol
 5    | 31.03.2014 | Implementing an application protocol | Implement a client and a server for your own protocol
