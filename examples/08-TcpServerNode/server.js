@@ -1,14 +1,15 @@
 // This is an example for a simple echo server implemented in Node.js. It
 // demonstrates how to write single-threaded, asynchronous code that allows
-// one server to talk to several clients concurrently
+// one server to talk to several clients concurrently. 
+//
+// readline is a module that gives us the ability to consume a stream line
+// by line
 
 var net = require('net');
 var readline = require('readline');
 
 // let's create a TCP server
 var server = net.createServer();
-
-
 
 // it can react to events: 'listening', 'connection', 'close' and 'error'
 // let's register our callback methods; they will be invoked when the events
@@ -31,6 +32,11 @@ function callbackFunctionToCallWhenSocketIsBound() {
 // 'data' event that can be raised on the socket.
 function callbackFunctionToCallWhenNewClientHasArrived(socket) {
 	
+	// We wrap a readline interface around the socket IO streams; every byte arriving
+	// on the socket will be forwarded to the readline interface, which will take care
+	// of buffering the data and will look for end-of-line separators. We will not register
+	// a callback handler on the socket (it is a possibility), but rather on the readline
+	// interface. The 'line' events are raised whenever a new line is available.
 	var rl = readline.createInterface({
 	  input: socket,
 	  output: socket
