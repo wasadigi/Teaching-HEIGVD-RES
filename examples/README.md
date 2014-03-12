@@ -50,3 +50,12 @@ This example compares two "echo" servers. The first one is single-threaded and i
 **Keywords**: lecture 2, Node.js, io, TCP, server, single-thread, non-blocking, asynchronous, callback
 
 This example implements a simple TCP server, capable of servicing multiple servers with a single process and a single thread. Start it with the `node server.js` command.
+
+
+## Lecture 3: UDP Programming
+
+### 09-Thermometers
+
+**Keywords**: lecture 3, Node.js, UDP, client, server
+
+This example demonstrates a simple client-server application implemented in Node.js, which implements a simple protocol. Two scripts are provided (a third one defines constants for the protocol). Running the station.js scripts will simulate a *data collection station* that joins a multicast group and listens for UDP datagrams. Running the thermometer.js script will simulate a *smart thermometer* that publishes a tempurature measurement on a periodic basis. Try to run several thermometers in parallel and observe that the measures are received and reported by the data collection station.
