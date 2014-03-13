@@ -50,7 +50,7 @@ After this lab, you should be able to:
 
 ## <a name="Specifications"></a>Specifications
 
-* Your goal is to write an application that **recursively traverses a portion of your file system**, starting in a specific directory. During this traversal, you will read the content of text files. You will also **apply two basic transformations** to these files and **save the result in new files**.
+* Your goal is firstly to understand the implementation of a custom application-level protocol (the Roulette Protocol), by reading the specification and analyzing the provided code. Your goal is then to extend the provided code, by implementing the version 2 of the Roulette Protocol.
 
 ### The Roulette Protocol V1
 
@@ -68,7 +68,7 @@ Command | Processing done by the server       | Response
 `HELP`    | The server retrieves the commands defined by the protocol version. | `Commands: [HELP, RANDOM, LOAD, INFO, BYE]`
 `RANDOM`    | The server randomly selects one of the students in its store. | `{'fullname' : 'olivier liechti'}`, where `olivier liechti` is the name of the victim.
 `LOAD`    | The server changes the state of the session and starts reading client data line by line until it gets a line with the `ENDOFDATA` string. Every new line is interpreted as the full name of a new student that is added to the data store.  | After receiving the `LOAD` command immediately returns `Send your data [end with ENDOFDATA]`. After receiving `ENDOFDATA`, the server sends back `DATA LOADED`. 
-`INFO`    | The server retrieves the protocol version and the number of students currently in the store. | `{'protocol version' : '1', numberOfStudents' : 3}`, where `3` is the number of students currently in the server data store
+`INFO`    | The server retrieves the protocol version and the number of students currently in the store. | `{'protocol version' : '1', 'numberOfStudents' : '3'}`, where `3` is the number of students currently in the server data store
 `BYE`    | The server closes the connection.  | *No response*
 
 
