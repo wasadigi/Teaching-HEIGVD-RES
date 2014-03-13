@@ -43,7 +43,7 @@ This project contains the code of both the server and the client for a custom ap
 
 **Keywords**: lecture 2, java, io, TCP, server, threads, runnable, workers
 
-This example compares two "echo" servers. The first one is single-threaded and is able to process only one client at the time (other clients have to wait until the previous one is done). The second one is multi-threaded
+This example compares two "echo" servers. The first one is single-threaded and is able to process only one client at the time (other clients have to wait until the previous one is done). The second one is multi-threaded.
 
 ### 08-TcpServerNode
 
@@ -59,3 +59,9 @@ This example implements a simple TCP server, capable of servicing multiple serve
 **Keywords**: lecture 3, Node.js, UDP, client, server
 
 This example demonstrates a simple client-server application implemented in Node.js, which implements a simple protocol. Two scripts are provided (a third one defines constants for the protocol). Running the station.js scripts will simulate a *data collection station* that joins a multicast group and listens for UDP datagrams. Running the thermometer.js script will simulate a *smart thermometer* that publishes a tempurature measurement on a periodic basis. Try to run several thermometers in parallel and observe that the measures are received and reported by the data collection station.
+
+### 10-BroadcastWithNodeJS
+
+**Keywords**: lecture 3, Node.js, UDP, client, server, broadcast
+
+This example demonstrates how to implement a broadcast protocol in Node.JS. The `publisher.js` script periodically broadcasts datagrams (putting the `255.255.255.255` broadcast address and the application-specific port in the destination fields). The `subscriber.js` script binds a datagram socket on the application-specific port and prints the content of every received datagram on the console.
