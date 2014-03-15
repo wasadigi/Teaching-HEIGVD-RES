@@ -1,3 +1,17 @@
+/*
+ This script binds a datagram socket on the protocol-specified port and listens for
+ broadcasted advertisments. Whenever a new ad is received, a message is printed on the
+ console.
+
+ Usage: to start the subscriber, type the following command in a terminal:
+
+   node subscriber.js
+
+*/
+
+// We have defined the multicast address and port in a file, that can be imported both by
+// publisher.js and subscriber.js. The address and the port are part of our simple 
+// application-level protocol
 var protocol = require('./ad-protocol');
 
 // We use a standard Node.js module to work with UDP
