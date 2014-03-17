@@ -31,6 +31,9 @@ In the previous lecture, we have looked at the TCP protocol and seen as it offer
 
 When you write and send letters, **you do not need to establish a synchronous connection** with your peers. You drop your letters in a mailbox, they are taken care of by the system and at some point they *should* be delivered at destination. 
 
+[![](images/03/returnaddress.jpg)](http://www.flickr.com/photos/orlando-herb/4835564098/)
+
+
 In the postal system, every letter is handled independantly and has all the **information required for the routing** (i.e. the elements of the destination address). Furthermore, the letter should also mention the **sender address**. When you receive a letter, this is very useful because it gives you the information you need if you want to **send back a response**. UDP applies the same logic: datagrams contain both the source and destination coordinates, which can be used by the recipients to prepare their replies.
 
 Also, remember that in some situations, letters *may* get lost. Does that mean that it is impossible to specify and implement **reliable application-level protocols on top UDP** (which is a requirement for file transfer protocols for instance)? No, it is not, but the burden is on the application developer's shoulders. What is offered by TCP has to be implemented on top of UDP.
@@ -79,6 +82,8 @@ recsize = recvfrom(sock, (void *)buffer, sizeof(buffer), 0, (struct sockaddr *)&
 ### <a name="UsingTheSocketApi"></a>3. So… How Do Clients and Servers Use UDP?
 
 ### 3.1. Messaging Patterns
+
+[![](images/03/arrows.jpg)](http://www.flickr.com/photos/yourpaldave/379687848/)
 
 Different messaging patterns can be implemented with UDP:
 
@@ -255,6 +260,8 @@ s.bind(protocol.PROTOCOL_PORT, function() {
 
 
 ### <a name="ServiceDiscoveryProtocols"></a>5. Service Discovery Protocols
+
+[![](images/03/water.jpg)](http://www.nytimes.com/2008/10/09/us/09water.html?scp=1&sq=waterford%20possessed&st=cse&_r=0)
 
 As we have seen before, one particularity of broadcast and multicast data transmission is that **the sender of a message does not need to know who the consumer(s) of that message will be**. In the case of broadcast, the sender knows that *all nearby nodes* will receive it. In the case of multicast, the sender knows that *all nodes that have expressed their interest* will receive it.
 
