@@ -65,3 +65,9 @@ This example demonstrates a simple client-server application implemented in Node
 **Keywords**: lecture 3, Node.js, UDP, client, server, broadcast
 
 This example demonstrates how to implement a broadcast protocol in Node.JS. The `publisher.js` script periodically broadcasts datagrams (putting the `255.255.255.255` broadcast address and the application-specific port in the destination fields). The `subscriber.js` script binds a datagram socket on the application-specific port and prints the content of every received datagram on the console.
+
+### 11-BroadcastMulticastWithJava
+
+**Keywords**: lecture 3, java, UDP, client, server, broadcast, multicast
+
+This example demonstrates how to implement broadcast and multicast communication in Java, using the `DatagramPacket`, `DatagramSocket` and `MulticastSocket` classes. Publishers and subscribers are provided.
