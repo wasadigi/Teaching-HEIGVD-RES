@@ -83,11 +83,11 @@ Revision history
 > 
 > Sometimes, you will specify timing constraints in this part of the document. For example, you could state that when the conversation enters a particular state, then a timer is started and emits a signal after a given time. This signal would be considered as a specific event, that might trigger a transition to another state and other side effects (closing of a connection, emission of a message, etc.).
 
-### 4.3. Message Types, Syntax and Semantic
+### 4.3. Message Types, Syntax and Semantics
 
 >In this section, you should describe in details what messages are exchanged by system components, how they are structured and encoded, when they should be sent and what should happen when they are received.
 
-> It is a good idea to write one paragraph for each type of message. Very often, you will also want to document some decisions that are valid for all messages. For example, you could state that all messages are encoded in JSON or in XML. Or, if you are using a grammar in your specification, you could state what kind of grammar it is and document the high-level production rules.
+> It is a good idea to write one paragraph for each type of message. Very often, you will also want to document some decisions that are valid for all messages. For example, you could state that all messages are encoded in JSON or in XML. Or, if you are using a grammar in your specification, you could state what kind of grammar it is and document the high-level production rules. Also, many protocol define a common structure for several message types, often involving the separation between an envelope (with headers) and a payload. This structure and the role of the headers may then be specified in an additional section that would be added here.
 
 #### 4.3.1. Message MESSAGE_TYPE_1
 
