@@ -40,7 +40,7 @@ Revision history
 
 >*Insert at least one **component diagram** here, to show a high-level overview of the system. The diagram should show the different types of components, their interfaces and their high-level interactions.*
 
--><img width=520 src="images/04/componentDiagram.png"><-
+<center><img width=520 src="images/04/componentDiagram.png"></center>
 
 ### 3.2. System Components
 
@@ -56,7 +56,7 @@ Revision history
 
 >*Insert one or more **sequence diagrams** here, to show the high-level interactions between the components (request-replies, discovery, etc.). This is not the place to give all the details, but it should give the reader a general understanding of what is happening at runtime. For each sequence diagram, explain the reason for which the components are interacting with each other (i.e. state the purpose of the interaction).*
 
--><img width=520 src="images/04/sequenceDiagram.png"><-
+<center><img width=520 src="images/04/sequenceDiagram.png"></center>
 
 
 
@@ -74,7 +74,7 @@ Revision history
 
 >*Start by showing a state machine diagram, which will give an overview to the readers. Then provide a detailed description of each state.*
 
--><img width=320 src="images/04/stateMachineDiagram.png"><-
+<center><img width=320 src="images/04/stateMachineDiagram.png"></center>
 
 
 #### 4.2.1. State NAME_OF_THE_STATE_1
