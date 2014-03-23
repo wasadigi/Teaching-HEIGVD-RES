@@ -1,4 +1,4 @@
-# Lecture 2: UDP Programming
+# Lecture 3: UDP Programming
 
 ## Table of Contents
 
