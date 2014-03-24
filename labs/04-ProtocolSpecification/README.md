@@ -42,7 +42,11 @@ The **third objective** of the lab will then be to **define a set of rules** to 
 
 ### Before Thursday morning
 
-1. **[Fork](https://help.github.com/articles/fork-a-repo)** the following repository on Github. Forking means that you will have **your own copy of the repo hosted on Github**. You will be able to push your local commits to your fork (working in a team). I will be able to access your work. (5')
+1. Read this week's [lecture](../../lectures/04-Lecture4-ProtocolSpecification.md) material.
+
+1. **[Fork](https://help.github.com/articles/fork-a-repo)** the following [repository](https://github.com/wasadigi/Smart-Calculator) on Github. Forking means that you will have **your own copy of the repo hosted on Github**. You will be able to push your local commits to your fork (working in a team). I will be able to access your work. (5')
+
+    **Note: you should create one fork for every pair of student.**
 
 2. After you have created the fork, you will need to **clone it on your local machine** (make sure that you do not clone *this* repository, but that you clone your own fork!). (5')
 
