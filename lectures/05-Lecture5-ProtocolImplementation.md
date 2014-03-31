@@ -19,6 +19,7 @@ In this lecture, we will build on the acquired knowledge and skills to talk abou
 
 To answer the question, we will use an **Application Protocol Toolkit** that was developed specifically for this course. The toolkit is a collection of Java interfaces and classes that make the implementation of protocols easier. We will look at these abstractions to have concrete examples of what needs to be done in a network component. From the concrete code, we will also describe the issues in more generic terms.
 
+**The Application Protocol Toolkit is available [here](../examples/12-ApplicationProtocolToolkit).**
 
 
 ## <a name="Lecture"></a>Lecture
