@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/Session.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/pingpong/PingPongProtocolHandler.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/pingpong/PingPongProtocolSerializer.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/IState.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/AbstractStateMachine.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/IInterfaceController.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/AbstractInterfaceController.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/AbstractProtocolHandler.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/TcpLineInterfaceController.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/IContext.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/Context.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/pingpong/PingPongProtocolStateMachine.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/IEventType.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/Event.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/Message.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/ISession.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/pingpong/PingPongInterfaceController.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/ApplicationProtocolToolkit.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/IStateMachine.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/IProtocolSerializer.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/pingpong/PingPongProtocol.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/interfaces/IProtocolHandler.java</file>
+            <file>file:/Users/admin/Documents/heig-vd/Teaching/RES/git/Teaching-HEIGVD-RES/examples/ApplicationProtocolToolkit/src/ch/heigvd/res/toolkit/impl/InvalidMessageException.java</file>
+        </group>
+    </open-files>
+</project-private>

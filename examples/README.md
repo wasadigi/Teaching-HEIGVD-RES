@@ -71,3 +71,13 @@ This example demonstrates how to implement a broadcast protocol in Node.JS. The 
 **Keywords**: lecture 3, java, UDP, client, server, broadcast, multicast
 
 This example demonstrates how to implement broadcast and multicast communication in Java, using the `DatagramPacket`, `DatagramSocket` and `MulticastSocket` classes. Publishers and subscribers are provided.
+
+
+## Lecture 5: Protocol Implementation
+
+### 12-ApplicationProtocolToolkit
+
+**Keywords**: lecture 5, application protocol framework, java, state machine
+
+This framework provides abstractions to implement custom application protocols, based on a layered structure. The project also includes the code for a server that implements the "Ping Pong Protocol" specified in [Lecture 5](../lectures/05-Lecture5-ProtocolImplementation.md#PingPong).
+
