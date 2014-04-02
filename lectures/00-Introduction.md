@@ -43,11 +43,11 @@ In **Part 3**, we will look at several **other application-level protocols**. We
 
 Week | Date       | Lecture             | Lab                 
 :---:|------------|---------------------|--------
-1    | 03.03.2014 | [Introduction to Java IOs](./01-Lecture1-JavaIOs.md)   | [Playing with Java IOs](../labs/01-JavaIO)
-2    | 10.03.2014 | [TCP programming](./02-Lecture2-TCPProgramming.md)     | [Implement a TCP client and a TCP server](../labs/02-TCPProgramming)
-3    | 17.03.2014 | [UDP programming](./03-Lecture3-UDPProgramming.md)     | [Implement a UDP client and a UDP server](../labs/03-UDPProgramming)
-4    | 24.03.2014 | [Specifying an application protocol](./04-Lecture4-ProtocolSpecification.md)  | [Specify your own protocol](../labs/04-ProtocolSpecification)
-5    | 31.03.2014 | Implementing an application protocol | Implement a client and a server for your own protocol
+1    | 03.03.2014 | [Introduction to Java IOs](./01-Lecture1-JavaIOs.md)   | [Playing with Java IOs](../labs/01-JavaIO/README.md)
+2    | 10.03.2014 | [TCP programming](./02-Lecture2-TCPProgramming.md)     | [Implement a TCP client and a TCP server](../labs/02-TCPProgramming/README.md)
+3    | 17.03.2014 | [UDP programming](./03-Lecture3-UDPProgramming.md)     | [Implement a UDP client and a UDP server](../labs/03-UDPProgramming/README.md)
+4    | 24.03.2014 | [Specifying an application protocol](./04-Lecture4-ProtocolSpecification.md)  | [Specify your own protocol](../labs/04-ProtocolSpecification/README.md)
+5    | 31.03.2014 | [Implementing an application protocol](./05-Lecture5-ProtocolImplementation.md) | [Implement your own protocol](../labs/05-ProtocolImplementation/README.md)
 6    | 07.04.2014 | Protocol concepts and syntax (1) | Implement a simple HTTP server
 7    | 14.04.2014 | Protocol concepts and syntax (2) | Implement a simple HTTP server
      |            | *Eastern Holidays*    |
