@@ -18,7 +18,7 @@ For this lab, you have 3 options:
 
 1. **Option 1**: implement **your own specification** (produced in the last lab). You can choose either the *discovery protocol* or the *compute service protocol* (and of course, you can implement both).
 
-2. **Option 2**: implement a **server** compliant with the [Tako Compute Protocol](https://github.com/j-bischof/Smart-Calculator/blob/master/specification/rfc-tcp.txt) (proposed by J. Bischof and H. Haiken)
+2. **Option 2**: implement a **Compute Engine** compliant with the [Tako Compute Protocol](https://github.com/j-bischof/Smart-Calculator/blob/master/specification/rfc-tcp.txt) (proposed by J. Bischof and H. Haiken)
 
 3. **Option 3**: implement both a **discovery listener** and a **discovery speaker** compliant with the [Discovery Protocol](https://github.com/rbuache/Smart-Calculator/blob/master/specification/SpecificationV1.md) (proposed by R. Buache and M. Frohlich)
 
