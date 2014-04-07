@@ -489,7 +489,6 @@ node server.js
 
 * This [section](http://docs.oracle.com/javase/tutorial/networking/sockets/index.html) of the Java tutorial, which explains how to use the Socket API in Java.
 
-
 ### <a name="ResourcesAdditional"></a>Additional resources
 
 * A [section](http://www.tcpipguide.com/free/t_TCPIPTransportLayerProtocolsTransmissionControlPro.htm) of the TCP/IP Guide dedicated to TCP, if you need a refresh on that topic. 
