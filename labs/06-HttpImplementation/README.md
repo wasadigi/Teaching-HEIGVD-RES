@@ -11,6 +11,8 @@
 
 This lab will be evaluated with a grade. You should work in teams of 2 students. You will be evaluated both on the client-side (which you will work on this week) and on the server-side implementation (which you will work on next week).
 
+**Important note:** when you implement the client, you **CANNOT** use the URLConnection class of the JDK and **HAVE TO** use the Socket class. In other words, you have to do a low-level implementation of the HTTP protocol.
+
 ## <a name="Requirements"></a>Requirements
 
 You have to implement a Java HTTP library, which a program can use to submit HTTP requests and to get corresponding HTTP responses. The library should handle the parsing of HTTP messages. On the client side, it should be able to deal with the main headers. It should also be able to deal with HTTP redirections.
