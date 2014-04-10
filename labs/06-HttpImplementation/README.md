@@ -1,4 +1,4 @@
-# Lab 5: Protocol Implementation
+# Lab 6-7: HTTP Implementation
 
 ## Table of Contents
 
