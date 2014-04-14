@@ -48,8 +48,8 @@ Week | Date       | Lecture             | Lab
 3    | 17.03.2014 | [UDP programming](./03-Lecture3-UDPProgramming.md)     | [Implement a UDP client and a UDP server](../labs/03-UDPProgramming/README.md)
 4    | 24.03.2014 | [Specifying an application protocol](./04-Lecture4-ProtocolSpecification.md)  | [Specify your own protocol](../labs/04-ProtocolSpecification/README.md)
 5    | 31.03.2014 | [Implementing an application protocol](./05-Lecture5-ProtocolImplementation.md) | [Implement your own protocol](../labs/05-ProtocolImplementation/README.md)
-6    | 07.04.2014 | Protocol concepts and syntax (1) | Implement a simple HTTP server
-7    | 14.04.2014 | Protocol concepts and syntax (2) | Implement a simple HTTP server
+6    | 07.04.2014 | [Protocol concepts and syntax (1)](./06-Lecture6-HTTP.md) | [Implement a simple HTTP library (client)](../labs/06-HttpImplementation/README.md)
+7    | 14.04.2014 | [Protocol concepts and syntax (2)](./07-Lecture7-HTTP-Part2.md) | Implement a simple HTTP server
      |            | *Eastern Holidays*    |
 8    | 28.04.2014 | **Test 1**          |
 9    | 05.05.2014 | Web infrastructure (1)   | Design and implement a web infrastructure
