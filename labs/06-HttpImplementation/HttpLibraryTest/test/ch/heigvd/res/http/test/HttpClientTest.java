@@ -36,60 +36,85 @@ public class HttpClientTest {
 
 	@Test
 	public void theHttpClientShouldHandleContentLengthHeader() throws IOException {
-		IResponse response = submitGETRequest("http://localhost:3000/test/withContentLength", FOLLOW_REDIRECTS);
+		String url = "http://localhost:3000/test/withContentLength";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertNotNull(response.getHeader("Content-Length"));
 		assertEquals(Integer.parseInt(response.getHeader("Content-Length")), response.getBody().length);
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		assertEquals("Hello, you should have received a Content-length header.", new String(response.getBody()));
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldHandleConnectionCloseHeader() throws IOException {
-		IResponse response = submitGETRequest("http://localhost:3000/test/connectionClose", FOLLOW_REDIRECTS);
+		String url = "http://localhost:3000/test/connectionClose";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertEquals("CLOSE", response.getHeader("Connection").toUpperCase());
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		assertEquals("Hello, you should have NOT have received any Content-length header.", new String(response.getBody()));
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldHandleChunkedEncoding() throws IOException {
-		IResponse response = submitGETRequest("http://localhost:3000/test/chunked", FOLLOW_REDIRECTS);
+		String url = "http://localhost:3000/test/chunked";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertEquals("CHUNKED", response.getHeader("Transfer-Encoding").toUpperCase());
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		assertEquals("Hello, this will probably be in the first chunk.And this will be in the second one.I am done. You should have received 3 chunks. Bye.", new String(response.getBody()));
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldHandleUrlWithoutTrailingSlash() throws IOException {
-		IResponse response = submitGETRequest("http://www.heig-vd.ch", FOLLOW_REDIRECTS);
+		String url = "http://www.heig-vd.ch";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldHandleUrlWithTrailingSlash() throws IOException {
-		IResponse response = submitGETRequest("http://www.heig-vd.ch/", FOLLOW_REDIRECTS);
+		String url = "http://www.heig-vd.ch/";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		assertTrue(response.getBody().length != 0);
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldBeAbleToIgnoreRedirects() throws IOException {
-		IResponse response = submitGETRequest("http://localhost:3000/test/redirect-absolute", DO_NOT_FOLLOW_REDIRECTS);
+		String url = "http://localhost:3000/test/redirect-absolute";
+		IResponse response = submitGETRequest(url, DO_NOT_FOLLOW_REDIRECTS);
 		assertEquals(StatusCode.FOUND, response.getStatusCode());
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldBeAbleToFollowRedirectsWithAbsoluteUrl() throws IOException {
-		IResponse response = submitGETRequest("http://localhost:3000/test/redirect-absolute", FOLLOW_REDIRECTS);
+		String url = "http://localhost:3000/test/redirect-absolute";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		assertEquals("You have reached the final destination. Redirect worked.", new String(response.getBody()));
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldBeAbleToFollowRedirectsWithRelativeRootUrl() throws IOException {
-		IResponse response = submitGETRequest("http://localhost:3000/test/redirect-relative-root", FOLLOW_REDIRECTS);
+		String url = "http://localhost:3000/test/redirect-relative-root";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		assertEquals("You have reached the final destination. Redirect worked.", new String(response.getBody()));
+		checkAgainstHttpURLConnection(url);
 	}
 
 	@Test
 	public void theHttpClientShouldBeAbleToFollowRedirectsWithRelativeUrl() throws IOException {
-		IResponse response = submitGETRequest("http://localhost:3000/test/redirect-relative", FOLLOW_REDIRECTS);
+		String url = "http://localhost:3000/test/redirect-relative";
+		IResponse response = submitGETRequest(url, FOLLOW_REDIRECTS);
 		assertEquals(StatusCode.SUCCESS, response.getStatusCode());
+		assertEquals("You have reached the final destination. Redirect worked.", new String(response.getBody()));
+		checkAgainstHttpURLConnection(url);
 	}
 
 	private void checkAgainstHttpURLConnection(String url) throws IOException {
