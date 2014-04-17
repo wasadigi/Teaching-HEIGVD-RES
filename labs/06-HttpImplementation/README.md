@@ -45,4 +45,14 @@ The objective of the first week is to implement the client-side of the library. 
   * Start by implementing the `LineInputStream`, which you will use to read the beginning of HTTP messags (line by line, with `CRLF` as end-of-line markers)
   * Proceed with the implementation of the HTTP client classes.
   * As you proceed with the implementation, run the JUnit tests to check your progress.
+  
+## <a name="Tasks2"></a>Tasks, Phase 2
 
+* **When the client-side part of the library works, you can proceed with the server side**
+    * You will apply the same logic: the library skeleton and the test projects have been updated to include placeholders and validators to guide you through the implementation of a basic HTTP server.
+    * You should use the provided automated tests to figure out which URLs you need to process and what you should do when you receive requests with these URLs on the request line.
+    
+* **Here are a couple of comments about the requirements**
+    * Your HTTP server should be able to handle multiple clients concurrently (we have seen how to use workers and threads for that purpose a few weeks ago).
+    * Your HTTP server should be able to serve static content from files stored in your local file system (in other words, you should use IO classes both to interact with files and with sockets).
+    * Your HTTP server does not have to implement chunked encoding. It can use the `Connection: close` header. For static content, however, it has to send the proper `Content-length` header.
