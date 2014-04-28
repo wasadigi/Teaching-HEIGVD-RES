@@ -129,8 +129,7 @@ public class ConcurrentHttpServerTest extends HttpServerTest {
 					long serverStartTime = Long.parseLong(firstLine.split(" ")[1]);
 					long serverEndTime = Long.parseLong(lastLine.split(" ")[1]);
 					long serverDuration = serverEndTime - serverStartTime;
-					assertTrue(Math.abs(serverDuration - 10000) < 1000);
-					assertTrue(Math.abs(clientDuration - 10000) < 1000);
+					assertTrue(Math.abs(serverDuration - clientDuration) < 1000);
 				} catch (IOException ex) {
 					Logger.getLogger(HttpServerTest.class.getName()).log(Level.SEVERE, null, ex);
 				}
