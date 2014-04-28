@@ -56,3 +56,25 @@ The objective of the first week is to implement the client-side of the library. 
     * Your HTTP server should be able to handle multiple clients concurrently (we have seen how to use workers and threads for that purpose a few weeks ago).
     * Your HTTP server should be able to serve static content from files stored in your local file system (in other words, you should use IO classes both to interact with files and with sockets).
     * Your HTTP server does not have to implement chunked encoding. It can use the `Connection: close` header. For static content, however, it has to send the proper `Content-length` header.
+
+## <a name="Tasks2"></a>How to Submit Your Work
+
+1. Create a `lastName1lasName2.zip` archive that contains:
+   * a `README.md` file, which should contain your **first names and last names**, any comments that you might have about your work (if there are things that you have not been able to do, explain what and why).
+   
+   * As many of you have already told me, one or two automated tests stay red (the one testing the radar.oreilly.com website is always red, the one testing www.lotaris.com is sometimes red). This is normal. Please analyze why (by investigating the cause and analyzing the returned response). Explain what you have understood in the `README.md` file.
+   
+   * the Netbeans project with your sources.
+
+2. Send your archive to Yannick Iseli (he has an address at HEIG-VD), with the subject **[RES] Lab Submission LastName1 LastName2**.
+   
+
+
+## <a name="Tasks2"></a>Evaluation Criteria
+
+To evaluate your work, we will:
+
+* Open your Netbeans project and make a **Clean and Build** to generate a `.jar` file. Warning: if your code does not compile, you will not reach the 4.0 grade.
+* Use your `.jar` file in our project, with our test classes and methods.
+* Run the automated tests.
+* Look at your code. We will look at the code structure, quality and readability. We will also look at the coding guidelines (names used for classes, methods and variables), at the presence of informative comments.

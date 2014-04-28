@@ -18,9 +18,10 @@
       * 5.3 - [Some Interesting Headers](#Headers)
       * 5.4 - [Some Interesting Status Codes](#StatusCodes)
    * 6 - [Parsing HTTP Messages](#ParsingHttpMessages)
-
-
-3. [What Should I Know For The Test And The Exam?](#Exam)
+* [Resources](#Resources)
+   1. [MUST read](#ResourcesMustRead)
+   2. [Additional Resources](#ResourcesAdditional)
+* [What Should I Know For The Test And The Exam?](#Exam)
 
 
 ## <a name="Objectives"></a>Objectives
@@ -511,3 +512,22 @@ Whether you are implementing a HTTP server or a HTTP client, you will need to pa
 * The rest of the HTTP RFC
 * [History](http://www.w3.org/Protocols/History.html) of the HTTP protocol specification
 * [History](http://www.w3.org/History.html) of the Web, going back to its roots
+
+## <a name="Exam"></a>What Should I Know For The Test and The Exam?
+
+Here is a **non-exhausive list of questions** that you can expect in the written tests and exams:
+
+* Write a complete HTTP request and a complete HTTP response. Explain the structure and the role of the different lines and of the different elements on each line.
+
+* Explain **how** and **why** TCP connections are handled differently in HTTP/1.0 and in HTTP/1.1.
+
+* Explain the notion of **content negotiation** in HTTP and illustrate it with an example (include an HTTP request and an HTTP response in your explanation).
+
+* What does it mean when we say that HTTP is a **stateless** protocol? Why is that sometimes a problem (give an example of an application where this is a problem) and what can be done about it?
+
+* Why is the **chunked transfer encoding** useful (what would be the problem if we did not have it?)? Explain what a client needs to do in order to parse a response that uses the chunked transfer encoding.
+
+* What are **cookies** in the context of the HTTP protocol? Explain why they are useful. Explain how they work at the protocol level (explain what the client and the server have to do, give examples of requests and responses).
+
+
+
