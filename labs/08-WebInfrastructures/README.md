@@ -43,16 +43,16 @@ Instead of creating the virtual machine yourself and instead of using the Virtua
 
 1. Make sure that you have downloaded and installed [Virtual Box](https://www.virtualbox.org/).
 2. Download and install [Vagrant](http://www.vagrantup.com/downloads.html).
-3. **Fork and clone** the following Github repo [https://github.com/wasadigi/Teaching-HEIGVD-RES-WebInfra](https://github.com/wasadigi/Teaching-HEIGVD-RES-WebInfra)
-4. **Edit the README.md file, add your names, commit and push**. This is very important, we will need this for doing the **grading**!
+3. **Fork and clone** the following Github repo [https://github.com/wasadigi/Teaching-HEIGVD-RES-MonSys](https://github.com/wasadigi/Teaching-HEIGVD-RES-MonSys)
+4. **Edit the Answers-Phase1.md file, add your names, commit and push**. This is very important, we will need this for doing the **grading**!
 5. Open a **command line terminal**. If you are using Mac OS or Linux, you will not have any issue. If you are using Windows, you will need to use PowerShell or cygwin if you want a proper work environment.
 
 #### Steps (setup)
 
-Move into the `lab-environment` directory
+Move into the `monsys-web-infra` directory
 
 ```
-cd lab-environment
+cd monsys-web-infra
 ```
 
 Create and launch the Linux box
