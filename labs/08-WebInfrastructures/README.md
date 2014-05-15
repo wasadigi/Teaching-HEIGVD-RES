@@ -53,7 +53,7 @@ Move into the `monsys-web-infra` directory
 
 ```
 cd monsys-web-infra
-```
+```	
 
 Create and launch the Linux box
 
@@ -221,6 +221,103 @@ What HTTP response did you get?
 ```
 
 
+### <a name="Phase4"></a>Phase 4: Adding a New Web Site in the Infrastructure
+
+In this phase, you will extend the infrastructure to **deploy a new web site**. At the end of the lab, if you have done everything correctly, you should be able to see [this](images/this.png) and [that](images/that.png) on your laptop. Look carefully at the full URLs in the navigation bar (and notice that we use the  port number 8014, and not 9090 as in the previous phases). 
+
+> **HINT 1:** I have mapped both the the DNS names to the IP address of the virtual machine (192.168.33.20, as defined in `Vagrantfile`).
+
+>**HINT 2:** I have changed the port mapping for the `rp-node` container in `Vagrantfile`.
+
+Here are the detailed requirements:
+
+1. You want to have **3 equivalent nodes**, behind the HTTP reverse proxy, to publish your web content. The raw content that you need for your web site is provided [here](https://github.com/wasadigi/Teaching-HEIGVD-RES-MonSys/tree/master/raw-content-clash-of-classes) (it has been flattened, so you will need to move the files in the right directory structure).
+
+2. On these nodes, you want to use the **apache httpd daemon** both to server static content (html documents, images, etc.).
+
+3. Users will access two types of URLs, starting with the following prefixes: `http://live.clashofclasses.ch` and `http://leaderboard.clashofclasses.ch`. Again, be aware that we want to use the standard HTTP port in these URLs.
+
+4. Your 3 nodes should be accessed **via the existing reverse proxy**. Hence, you will need to **modify the configuration** of this component.
+
+5. To achieve the objectives, you will need to do updates in the **Vagrant** and **Docker** configuration files.
+
+#### Step 1: Prepare content for new Docker containers and update the Vagrant file
+
+In the `monsys-web-infra` directory, you need to consider two elements:
+
+- The first one is the `Vagrantfile`, which specifies what needs to be done when the vagrant box (i.e. the virtual machine run by Virtual Box) is provisioned.
+
+- The second one is the `docker` directory, which contains one directory for each type of node.
+
+**You should use the existing configuration as a basis and make adjustments to meet the above requirements:**
+
+- Since you want to use apache on your three nodes, you should **clone** the `monsys-web-infra/docker/web-apache` directory (into a new one called `monsys-web-infra/docker/web-clash`). The directory contains both the **content** and the **configuration** files for the web site. the `Dockerfile` specifies where to copy these files (in the container file system). Look at the `ADD` directives for that.
+
+- In the `Vagrant file`, you should update three different sections. 
+  - In the first one, you should make sure that your 3 containers are stopped and removed at provisioning time (look at the `$script` variable). 
+  - In the second one, you should build a new image that will serve as a basis for your 3 containers (look for the `d.build_image` directive). 
+  - Finally, in the third one, you should run 3 containers using your own image as a basis (look for the `d.run` directive). You should add your configuration at the end of the `config.vm.provision "docker" do |d|` block, to make sure that your containers are started after the existing ones (*without going into details, this will avoid issues with IP addresses that are currently managed in a static, sub-optimal way; in other words, in the reverse proxy configuration, I expect the web-nodes to have particular IP addresses but I let Docker assign these addresses - hoping for the best...*).
+
+- You can do a first test by simply cloning the `web-apache` directory, updating the `Vagrantfile` file and doing a `vagrant provision`. When you are done, do a `vagrant ssh` and a `docker ps` (or a `docker ps -a`) to check that your 3 containers are properly running.
+
+#### Step 2: Prepare the web content
+
+- Once you have validated that you are able to create new Docker images and to run corresponding Docker containers, you can move to next step and prepare the content for your two web sites.
+
+- You will create **two virtual hosts**. This means that you will setup two root folders on your Docker container image (the same image is used to run both virtual hosts).
+
+- Use the provided content (HTML, CSS and JPG files) and place it in the appropriate directory structure. In some cases, you should change the name of the files (e.g. the HTML files). You should not have to change the content of the file.
+
+
+#### Step 3: Update the apache httpd configuration
+
+- You should create **one configuration file for each of the two virtual hosts**. Again, look at it was done for the existing infrastructure. **Be aware that apache httpd will load files if they end with the `.conf` suffix**.
+
+#### Step 4: Test and validate your web containers
+
+- At this point, you need to test and validate your setup. You may not yet be able to access your containers from a browser running on your host operating system, but that should not prevent you from sending hand-crafted HTTP requests from your VM to your containers. Remember that you can use `docker inspect` to get information about containers, including their IP address.
+
+- Describe in details the procedure you have followed to activate, test and validate your configuration. Provide the list of commands you have typed and the output of these commands. If you have encountered issues, then describe them and explain how you have solved them. Make sure to test that the two virtual hosts are working as expected!
+
+```
+# -- YOUR ANSWER TO QUESTION 9 --
+
+What procedure did you follow to validate the configuration of 
+your new web nodes? 
+
+Provide details and evidence (command results, etc.) that your 
+setup is correct.
+# -------------------------------
+```
+
+#### Step 5: Update the nginx reverse proxy configuration
+
+- Assuming that your 3 web containers up and running, you still have to configure the reverse proxy to implement the **forwarding** and **load balancing** of HTTP requests targeting your virtual hosts. You will do this by editing the configuration files of the `rp-nginx` node (look for the `default` file under the `etc` sub-tree).
+
+- Remember that you must first **define a pool of nodes** (such a pool is defined for the two web nodes in the original infrastructure), and then define the **forwarding rules**.
+
+- To apply your changes, you will do yet another `vagrant provision`. Make sure to do a `docker ps` after that. Indeed, if you have made mistakes in your configuration files, the nginx daemon may refuse to start. You would then see a missing container when doing the `docker ps`. Doing a `docker ps -a` and a `docker logs` will allow you to start the troubleshooting process.
+
+
+
+#### Step 6: Test and validate of the updated infrastructure
+
+- When you believe that your infrastructure has been fully configured and is working, you will need to specify a validation procedure. Your two virtual hosts should be accessible via  [`http://live.clashofclasses.ch`](http://live.clashofclasses.ch) and [`http://dashboard.clashofclasses.ch`](http://dashboard.clashofclasses.ch).
+
+- Don't forget to change your local DNS configuration, so that `live.clashofclasses.ch` and `live.clashofclasses.ch` are resolved to the IP address of the virtual machine (this IP is defined in `Vagrantfile`).
+
+```
+# -- YOUR ANSWER TO QUESTION 10 --
+
+What procedure did you follow to validate the configuration of 
+your complete infrastructure?
+
+Provide details and evidence (command results, etc.) that your 
+setup is correct.
+
+# -------------------------------
+```
+
 
 ## <a name="Troubleshooting"></a>Troubleshooting & FAQ
 
@@ -232,8 +329,11 @@ What HTTP response did you get?
 
 ```
 vagrant halt
-vagrant up --provision
+vagrant up
+vagrant provision
 ```
+
+When you are troubleshooting this type of issue, make sure to run `docker ps` and `docker ps -a` commands on a regular basis. When you look at the output of these commands, check that the containers are running. Also, check that there is something in the `PORTS` column of the output of `docker ps`. If that is not the case, then there is an issue with Docker. Try to do a `sudo service docker stop` followed by a `sudo service docker start` and check again.
 
 **2. A Docker container seems to have disappeared**
 
