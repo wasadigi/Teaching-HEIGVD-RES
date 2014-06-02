@@ -54,12 +54,12 @@ Week | Date       | Lecture             | Lab
 8    | 28.04.2014 | **Test 1**          |
 9    | 05.05.2014 | Web infrastructure (1)   | Design and implement a web infrastructure
 10   | 12.05.2014 | Web infrastructure (2)   | Design and implement a web infrastructure
-11   | 19.05.2014 | LDAP   | Install a directory server, import data, query with LDAP filters
-12   | 26.05.2014 | LDAP   | **OFF**
-13   | 02.06.2014 | Electronic mail protocols | Implement a SMTP client
-14   | 09.06.2014 | **OFF** | Implement an IMAP client
-15   | 16.06.2014 | **Test 2**   |
-16   | 23.06.2014 | File transfer protocols   | Do manipulations with rsync / SFTP
+11   | 19.05.2014 | Web infrastructure (3)   | Design and implement a web infrastructure
+12   | 26.05.2014 | LDAP (1) | **OFF**
+13   | 02.06.2014 | LDAP (2) |  Install a directory server, import data, query with LDAP filters
+14   | 09.06.2014 | **OFF** |  Install a directory server, import data, query with LDAP filters
+15   | 16.06.2014 | **Test 2**   |  Install a directory server, import data, query with LDAP filters
+16   | 23.06.2014 | Mail protocols   | Implement a simple mail client
 
 
 ## Important Dates
@@ -70,6 +70,5 @@ Week | Date       | Description
 8|28.04.2014|**Test 1**: network programming, HTTP protocol
 8|28.04.2014|Submit the **HTTP server lab** by 8:00 AM (each 4 hours delay increment = 0.5 pt penalty)
 11|19.05.2014|Submit the **Web infrastructure lab** by 8:00 AM (each 4 hours delay increment = 0.5 pt penalty)
-14|09.06.2014|Submit the **LDAP lab** by 8:00 AM (each 4 hours delay increment = 0.5 pt penalty)
-15|16.06.2014|**Test 2**: Web infrastructure, LDAP and messaging protocols
-
+14|23.06.2014|Submit the **LDAP lab** by 8:00 AM (each 4 hours delay increment = 0.5 pt penalty)
+15|16.06.2014|**Test 2**: Web infrastructure and LDAP
