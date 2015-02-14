@@ -6,9 +6,9 @@ On this page, you will find a brief introduction for the lab and some administra
 
 The complete instructions are available in another GitHub repo, which you will **fork** (you will have your copy of the repo hosted on GitHub) and then **clone** (you will have a copy your your fork on your machine).
 
-The repo is available at [SoftEng-HEIGVD/Teaching-HEIGVD-RES-2015-Labo1](https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-RES-2015-Labo1).
+The repo is available at [SoftEng-HEIGVD/Teaching-HEIGVD-RES-2015-Labo-00](https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-RES-2015-Labo-00).
 
-Enjoy.
+**Enjoy**.
 
 
 ### Objectives
