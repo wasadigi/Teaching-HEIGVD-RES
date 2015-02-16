@@ -41,4 +41,4 @@ The goal of this first lab is to get familiar with the workflow and the supporti
 
 **However**, we will keep track of your results and they will be used for the evaluation of your overall performance during the course. But more importantly: if you do not invest enough time in this lab, if you don't understand what is happening and don't master the tools, **you will suffer a lot** during the upcoming labs (and next year).
 
-Please invest the time to achieve the lab objectives. Please come to us and let us know if you have issues or do not understand some of the tasks. If you have questions when you are working outside lab hours or if we are busy with some else, open a discussion in the moodle forum.
+Please invest the time to achieve the lab objectives. Please come to us and let us know if you have issues or do not understand some of the tasks. If you have questions when you are working outside lab hours or if we are busy with someone else, open a discussion in the moodle forum.
