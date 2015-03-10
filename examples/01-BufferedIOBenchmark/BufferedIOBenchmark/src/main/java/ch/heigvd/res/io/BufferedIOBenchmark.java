@@ -1,13 +1,17 @@
 package ch.heigvd.res.io;
 
+import ch.heigvd.res.io.metrics.Metric;
 import ch.heigvd.res.io.util.Timer;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,7 +42,19 @@ public class BufferedIOBenchmark {
 
 	final static String FILENAME_PREFIX = "test-data"; // we will write and read test files at this location
 	final static long NUMBER_OF_BYTES_TO_WRITE = 1024 * 1024 * 10; // we will write and read 10 MB files
-	
+    
+    private Writer metricsWriter;
+    
+	private void initMetrics() throws IOException {
+      metricsWriter = new BufferedWriter(new FileWriter("metrics.csv"));
+      Metric.writeCSVHeader(metricsWriter);
+    }
+    
+    private void closeMetrics() throws IOException {
+      metricsWriter.flush();
+      metricsWriter.close();
+    }
+    
 	/**
 	 * This method drives the generation of test data file, based on the parameters passed. The method opens a
 	 * FileOutputStream. Depending on the strategy, it wraps a BufferedOutputStream around it, or not. The method
@@ -74,7 +90,14 @@ public class BufferedIOBenchmark {
 				LOG.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
-		LOG.log(Level.INFO, "  > Done in {0} ms.", Timer.takeTime());
+        long duration = Timer.takeTime();
+		LOG.log(Level.INFO, "  > Done in {0} ms.", duration);
+      try {
+        Metric metric = new Metric("WRITE", ioStrategy.toString(), blockSize, numberOfBytesToWrite, duration);
+        metric.toCSV(metricsWriter);
+      } catch (IOException ex) {
+        Logger.getLogger(BufferedIOBenchmark.class.getName()).log(Level.SEVERE, null, ex);
+      }
 	}
 	
 	/**
@@ -122,6 +145,7 @@ public class BufferedIOBenchmark {
 	private void consumeTestData(IOStrategy ioStrategy, int blockSize) {
 		LOG.log(Level.INFO, "Consuming test data ({0}, block size: {1}...", new Object[]{ioStrategy, blockSize});
 		Timer.start();
+        long numberOfBytesRead = 0;
 
 		InputStream is = null;
 		try {
@@ -134,7 +158,7 @@ public class BufferedIOBenchmark {
 			}
 
 			// Now, let's call the method that does the actual work and produces bytes on the stream
-			consumeDataFromStream(is, ioStrategy, blockSize);
+			numberOfBytesRead = consumeDataFromStream(is, ioStrategy, blockSize);
 
 			// We are done, so we only have to close the input stream
 			is.close();
@@ -149,7 +173,14 @@ public class BufferedIOBenchmark {
 				LOG.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
-		LOG.log(Level.INFO, "  > Done in {0} ms.", Timer.takeTime());
+        long duration = Timer.takeTime();
+		LOG.log(Level.INFO, "  > Done in {0} ms.", duration);
+      try {
+        Metric metric = new Metric("READ", ioStrategy.toString(), blockSize, numberOfBytesRead, duration);
+        metric.toCSV(metricsWriter);
+      } catch (IOException ex) {
+        Logger.getLogger(BufferedIOBenchmark.class.getName()).log(Level.SEVERE, null, ex);
+      }
 
 	}
 
@@ -158,7 +189,7 @@ public class BufferedIOBenchmark {
 	 * Depending on the strategy, the method either reads bytes one by one OR in chunks (the size of the chunk
 	 * is passed in parameter). The method does not do anything with the read bytes, except counting them.
 	 */ 
-	private void consumeDataFromStream(InputStream is, IOStrategy ioStrategy, int blockSize) throws IOException {
+	private long consumeDataFromStream(InputStream is, IOStrategy ioStrategy, int blockSize) throws IOException {
 		int totalBytes = 0;
 		// If the strategy dictates to write byte by byte, then it's easy to write the loop; but let's just hope that our client has 
 		// given us a buffered output stream, otherwise the performance will be really bad
@@ -178,17 +209,18 @@ public class BufferedIOBenchmark {
 				totalBytes += bytesRead;
 			}
 		}
-		
 		LOG.log(Level.INFO, "Number of bytes read: {0}", new Object[]{totalBytes});
+        return totalBytes;
 	}
 
 	/**
 	 * @param args the command line arguments
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.setProperty("java.util.logging.SimpleFormatter.format", "%5$s %n");
 
 		BufferedIOBenchmark bm = new BufferedIOBenchmark();
+        bm.initMetrics();
 
 		LOG.log(Level.INFO, "");
 		LOG.log(Level.INFO, "*** BENCHMARKING WRITE OPERATIONS (with BufferedStream)", Timer.takeTime());
@@ -217,6 +249,8 @@ public class BufferedIOBenchmark {
 		bm.consumeTestData(IOStrategy.BlockByBlockWithoutBufferedStream, 50);
 		bm.consumeTestData(IOStrategy.BlockByBlockWithoutBufferedStream, 5);
 		bm.consumeTestData(IOStrategy.ByteByByteWithoutBufferedStream, 0);
+        
+        bm.closeMetrics();
 	}
 
 }
