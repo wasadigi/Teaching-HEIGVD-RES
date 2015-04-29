@@ -397,7 +397,7 @@ To understand how multiplexing works, **let us take the analogy of a restaurant*
 How does it work in practice? We have mentioned special system calls before. The `select()` and `poll()` functions are two of them. They work with sockets that have been put in a special, *non-blocking* state. As a result, the usual calls (`accept()`, `read()`, `write()`) do not block the execution of the current thread. The `select()` and `poll()` functions are blocking, but they allow the programmer to give a list of sockets. The execution of the thread will block until *something* happens to *at least one* of the sockets in the list. Have a look at [Beej's Guide to Network Programming](http://www.beej.us/guide/bgnet/output/html/multipage/advanced.html#select), which has a section dedicated to this topic with code examples.
 
 
-####<a name="SingleProcessSingleThreadedNonBlockingAsynchronous"></a>5.5. Single Process, Single-Threaded, Non-Blocking Servers (synchronous programming)
+####<a name="SingleProcessSingleThreadedNonBlockingAsynchronous"></a>5.5. Single Process, Single-Threaded, Non-Blocking Servers (asynchronous programming)
 
 There is another way to handle multiple connections at the same time, with a single process and a single thread. It also consists of using non-blocking IOs, but implies a different programming style and control flow structure. It is associated with an event-based approach and with the use of callback functions.
 
