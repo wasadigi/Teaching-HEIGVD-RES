@@ -474,7 +474,7 @@ function callbackFunctionToCallWhenNewClientHasArrived(socket) {
 }
 ```
 
-This code implements a TCP server capable of servicing multiple clients at the same time, on a single thread. There are 2 important elements to look at in the code. Firstly, we see that the programmer has defined several callback functions. This is where he has expressed what to do when certain events happen. Secondly, he has subscribed to several types of events and registered the callback functions with them. In other words, he has expressed the fact that ***when** some events happen, **then** some functions need to be called*. Note that Node.js developers usually prefer to use *anonymous callback functions* (defined inline), but this example was written to emphasize the nature of the callback functions.
+This code implements a TCP server capable of servicing multiple clients at the same time, on a single thread. There are 2 important elements to look at in the code. Firstly, we see that the programmer has defined several callback functions. This is where he has expressed what to do when certain events happen. Secondly, he has subscribed to several types of events and registered the callback functions with them. In other words, he has expressed the fact that **when** some events happen, **then** some functions need to be called. Note that Node.js developers usually prefer to use **anonymous callback functions** (defined inline), but this example was written to emphasize the nature of the callback functions.
 
 The code is available in the [TcpServerNode example](../examples/08-TcpServerNode), which you can run with the following command:
 
