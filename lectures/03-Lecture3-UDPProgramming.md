@@ -40,7 +40,7 @@ Also, remember that in some situations, letters *may* get lost. Does that mean t
 
 What does that mean concretely? What does the application developer need to do when implementing a UDP-based protocol? Here are a couple of important points:
 
-* Firstly, **there are application-level protocols where this is not really an issue** (in other words, there are application protocols that are **tolerant to data loss**). Think of a video streaming application protocol: it does not matter if some of the data is lost. The worse that can happen is a lower quality. Think of a protocol used by sensors to report measurements to a data collection infrastructure (see this [example](../examples/09-Thermometers)). Again, loosing some measurements may be totally acceptable.
+* Firstly, **there are application-level protocols where this is not really an issue** (in other words, there are application protocols that are **tolerant to data loss**). Think of a video streaming application protocol: it does not matter if some of the data is lost. The worse that can happen is a lower quality. Think of a protocol used by sensors to report measurements to a data collection infrastructure (see this [example](../../2014/examples/09-Thermometers)). Again, loosing some measurements may be totally acceptable.
 
 * For applications where data loss cannot be accepted, the client needs a way to **know if a datagram that it has sent has been received by the server**. If it thinks that the datagram has been lost, then it should try again and **resend the datagram**. That should remind you of the way TCP works: a combination of **acknowledgments** and **timers** are certainly one way to address this issue. 
 
@@ -57,7 +57,7 @@ What does that mean concretely? What does the application developer need to do w
 
 ### <a name="SocketAPI"></a>2. UDP in the Socket API
 
-The **Socket API** provides functions for using UDP in application-level code. When using the C API, the first thing to be aware of is that it is when creating the socket that one specifies whether we want to use TCP or UPP. Compare the following two instructions:
+The **Socket API** provides functions for using UDP in application-level code. When using the C API, the first thing to be aware of is that it is when creating the socket that one specifies whether we want to use TCP or UDP. Compare the following two instructions:
 
 ```
 // If we want to use TCP
@@ -87,7 +87,7 @@ recsize = recvfrom(sock, (void *)buffer, sizeof(buffer), 0, (struct sockaddr *)&
 
 Different messaging patterns can be implemented with UDP:
 
-* A common and simple pattern is the **fire-and-forget notification** pattern. The client prepares a datagram and sends it to one or more recipients. If data loss can be tolerated, nothing else needs to be done. In the [thermoter example](../examples/09-Thermometers), we use this pattern. Smart thermometers publish measurements on the network on a regular basis. No response is expected and if some measurements are lost, it is not an issue.
+* A common and simple pattern is the **fire-and-forget notification** pattern. The client prepares a datagram and sends it to one or more recipients. If data loss can be tolerated, nothing else needs to be done. In the [thermoter example](../../2014/examples/09-Thermometers), we use this pattern. Smart thermometers publish measurements on the network on a regular basis. No response is expected and if some measurements are lost, it is not an issue.
 
 * Another common pattern is the **request-reply** pattern. The client prepares a datagram, in which it encapsulates an application-level message (in other words, the application level message is the payload of the UDP datagram). The client then **creates a datagram socket**, which will be **used both for sending the request and for receiving the response**. Note that it is possible, but **not required**, to specify a port. If no port is specified, then the operating system will automatically assign a free port to the socket. Now, remember what we said about the **return address** on physical letters. Every datagram (together with the encapsulating IP packet) sent via the socket will contain 4 values. Firstly, the **destination address and port** (**explicitly** set by the developer). Secondly, the **source address and port** (**automatically** set by operating system, retrieved from the socket). 
 

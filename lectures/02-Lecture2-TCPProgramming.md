@@ -397,7 +397,7 @@ To understand how multiplexing works, **let us take the analogy of a restaurant*
 How does it work in practice? We have mentioned special system calls before. The `select()` and `poll()` functions are two of them. They work with sockets that have been put in a special, *non-blocking* state. As a result, the usual calls (`accept()`, `read()`, `write()`) do not block the execution of the current thread. The `select()` and `poll()` functions are blocking, but they allow the programmer to give a list of sockets. The execution of the thread will block until *something* happens to *at least one* of the sockets in the list. Have a look at [Beej's Guide to Network Programming](http://www.beej.us/guide/bgnet/output/html/multipage/advanced.html#select), which has a section dedicated to this topic with code examples.
 
 
-####<a name="SingleProcessSingleThreadedNonBlockingAsynchronous"></a>5.5. Single Process, Single-Threaded, Non-Blocking Servers (synchronous programming)
+####<a name="SingleProcessSingleThreadedNonBlockingAsynchronous"></a>5.5. Single Process, Single-Threaded, Non-Blocking Servers (asynchronous programming)
 
 There is another way to handle multiple connections at the same time, with a single process and a single thread. It also consists of using non-blocking IOs, but implies a different programming style and control flow structure. It is associated with an event-based approach and with the use of callback functions.
 
@@ -474,7 +474,7 @@ function callbackFunctionToCallWhenNewClientHasArrived(socket) {
 }
 ```
 
-This code implements a TCP server capable of servicing multiple clients at the same time, on a single thread. There are 2 important elements to look at in the code. Firstly, we see that the programmer has defined several callback functions. This is where he has expressed what to do when certain events happen. Secondly, he has subscribed to several types of events and registered the callback functions with them. In other words, he has expressed the fact that ***when** some events happen, **then** some functions need to be called*. Note that Node.js developers usually prefer to use *anonymous callback functions* (defined inline), but this example was written to emphasize the nature of the callback functions.
+This code implements a TCP server capable of servicing multiple clients at the same time, on a single thread. There are 2 important elements to look at in the code. Firstly, we see that the programmer has defined several callback functions. This is where he has expressed what to do when certain events happen. Secondly, he has subscribed to several types of events and registered the callback functions with them. In other words, he has expressed the fact that **when** some events happen, **then** some functions need to be called. Note that Node.js developers usually prefer to use **anonymous callback functions** (defined inline), but this example was written to emphasize the nature of the callback functions.
 
 The code is available in the [TcpServerNode example](../examples/08-TcpServerNode), which you can run with the following command:
 
