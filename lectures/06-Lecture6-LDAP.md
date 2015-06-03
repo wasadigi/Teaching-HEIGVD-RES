@@ -39,7 +39,7 @@ Here are the objectives for this lecture:
 
 Unlike in a Relational Database Management System, information is not stored in a tabular format in a directory server. Rather, **it is stored in a hierarchical data structure called the Directory Information Tree (DIT)**.
 
-![](images/09/dit.png)
+![](images/09/DIT.png)
 
 The **root** of the directory typically represents the organization (such as the HEIG-VD). Every node in the tree has a **type** (i.e. it represents a person, an organizational unit, a device, etc.) and a number of **attributes** (e.g. a name, an phone number, a department number). Every node is uniquely identified by its **Distinguished Name** (DN), which is a string value that also makes it possible to locate it in the tree (see below).
 
