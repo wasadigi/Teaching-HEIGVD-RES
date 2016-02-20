@@ -83,6 +83,7 @@ public class PresenceServer implements Runnable {
 			LOG.info("shouldRun is false... server going down");
 		} catch (IOException ex) {
 			LOG.log(Level.SEVERE, ex.getMessage(), ex);
+            System.exit(-1);
 		}
 	}
 
