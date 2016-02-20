@@ -45,3 +45,8 @@
 /examples/01-BufferedIOBenchmark/BufferedIOBenchmark2/target/
 /examples/01-BufferedIOBenchmark/BufferedIOBenchmark/target/
 /examples/03-CharacterIODemo/CharacterIODemo/target/
+/examples/04-StreamingTimeServer/StreamingTimeServer2/target/
+/examples/04-StreamingTimeServer/StreamingTimeServer/target/
+/examples/DumbHttpClient/target/
+/examples/05-DumbHttpClient/DumbHttpClient/target/
+/examples/06-PresenceApplication/PresenceApplication/target/
