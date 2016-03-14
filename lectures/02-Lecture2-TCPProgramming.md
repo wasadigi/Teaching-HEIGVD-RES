@@ -1,4 +1,4 @@
-# Lecture 2: TCP Programming.
+# Lecture 2: TCP Programming
 
 ## Table of Contents
 
