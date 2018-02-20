@@ -48,23 +48,26 @@ public class StreamingTimeServer {
       serverSocket = new ServerSocket(listenPort);
       logServerSocketAddress(serverSocket);
 
-      LOG.log(Level.INFO, "Waiting (blocking) for a connection request on {0} : {1}", new Object[]{serverSocket.getInetAddress(), Integer.toString(serverSocket.getLocalPort())});
-      clientSocket = serverSocket.accept();
+      while (true) {
+        LOG.log(Level.INFO, "Waiting (blocking) for a connection request on {0} : {1}", new Object[]{serverSocket.getInetAddress(), Integer.toString(serverSocket.getLocalPort())});
+        clientSocket = serverSocket.accept();
 
-      LOG.log(Level.INFO, "A client has arrived. We now have a client socket with following attributes:");
-      logSocketAddress(clientSocket);
+        LOG.log(Level.INFO, "A client has arrived. We now have a client socket with following attributes:");
+        logSocketAddress(clientSocket);
 
-      LOG.log(Level.INFO, "Getting a Reader and a Writer connected to the client socket...");
-      reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-      writer = new PrintWriter(clientSocket.getOutputStream());
+        LOG.log(Level.INFO, "Getting a Reader and a Writer connected to the client socket...");
+        reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        writer = new PrintWriter(clientSocket.getOutputStream());
 
-      LOG.log(Level.INFO, "Starting my job... sending current time to the client for {0} ms", testDuration);
-      for (int i = 0; i < numberOfIterations; i++) {
-        writer.println(String.format("{'time' : '%s'}", new Date()));
-        writer.flush();
-        LOG.log(Level.INFO, "Sent data to client, doing a pause...");
-        Thread.sleep(pauseDuration);
+        LOG.log(Level.INFO, "Starting my job... sending current time to the client for {0} ms", testDuration);
+        for (int i = 0; i < numberOfIterations; i++) {
+          writer.println(String.format("{'time' : '%s'}", new Date()));
+          writer.flush();
+          LOG.log(Level.INFO, "Sent data to client, doing a pause...");
+          Thread.sleep(pauseDuration);
+        }
       }
+
     } catch (IOException | InterruptedException ex) {
       LOG.log(Level.SEVERE, ex.getMessage());
     } finally {

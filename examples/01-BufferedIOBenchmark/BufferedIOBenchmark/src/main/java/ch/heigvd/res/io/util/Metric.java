@@ -6,8 +6,6 @@ package ch.heigvd.res.io.util;
  */
 public class Metric {
   
-  
-  
   private long duration;
   private String operationType;
 
@@ -16,7 +14,6 @@ public class Metric {
     this.operationType = operationType;
   }
 
-  
   public long getDuration() {
     return duration;
   }
