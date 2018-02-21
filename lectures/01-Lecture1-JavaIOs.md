@@ -146,7 +146,7 @@ Let us look at some elements of the code:
 
 * The `File` class is not used directly for reading and writing data. It is used to do file system operations, such as checking whether a file with a specific name exists or not. In this example, it would not be stricly required (as an alternative, we could pass the file name directly to the `FileInputStream` and `FileOutputStream` constructors).
 
-* The program is using two different streams, one connected to a source and the other ocnnected to a sink. The `FileInputStream` and `FileOutputStream` classes are used to create these streams.
+* The program is using two different streams, one connected to a source and the other connected to a sink. The `FileInputStream` and `FileOutputStream` classes are used to create these streams.
 
 * Once the streams have been opened, the logic is very simple. We use a loop to consume all bytes, one by one, from the input stream. Each time that we read a byte, we write it immediately to the output stream. We can see that the `read()` method returns an int. This value is -1 if the end of the stream has been reached. Otherwise, it has a value between 0 and 255 (we are reading a single byte).
 
