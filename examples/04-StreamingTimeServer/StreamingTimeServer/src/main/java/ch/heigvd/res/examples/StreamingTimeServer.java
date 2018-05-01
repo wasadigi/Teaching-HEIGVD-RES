@@ -66,6 +66,12 @@ public class StreamingTimeServer {
           LOG.log(Level.INFO, "Sent data to client, doing a pause...");
           Thread.sleep(pauseDuration);
         }
+
+        reader.close();
+        writer.close();
+        clientSocket.close();
+
+
       }
 
     } catch (IOException | InterruptedException ex) {

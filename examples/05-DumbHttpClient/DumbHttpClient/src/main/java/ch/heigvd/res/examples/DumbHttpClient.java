@@ -1,9 +1,6 @@
 package ch.heigvd.res.examples;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +32,7 @@ public class DumbHttpClient {
 			clientSocket = new Socket("www.heig-vd.ch", 80);
 			os = clientSocket.getOutputStream();
 			is = clientSocket.getInputStream();
-			
+
 			String malformedHttpRequest = "Hello, sorry, but I don't speak HTTP...\r\n\r\n";
 			os.write(malformedHttpRequest.getBytes());
 

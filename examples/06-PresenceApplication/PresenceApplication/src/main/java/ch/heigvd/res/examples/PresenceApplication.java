@@ -19,6 +19,11 @@ public class PresenceApplication {
 
 		Thread listenThread = new Thread(new PresenceServer());
 		listenThread.start();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 		PresenceClient c1 = new PresenceClient();
 		c1.connect("localhost", Protocol.PRESENCE_DEFAULT_PORT, "Sacha");
