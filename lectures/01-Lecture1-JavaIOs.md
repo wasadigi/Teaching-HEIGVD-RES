@@ -150,7 +150,7 @@ Let us look at some elements of the code:
 
 * Once the streams have been opened, the logic is very simple. We use a loop to consume all bytes, one by one, from the input stream. Each time that we read a byte, we write it immediately to the output stream. We can see that the `read()` method returns an int. This value is -1 if the end of the stream has been reached. Otherwise, it has a value between 0 and 255 (we are reading a single byte).
 
-* Note that **this code is not very efficient and that copying large files would be painfully slow**. We will see later that is is much better to read/write blocks of bytes in a single read operation, or to use buffered streams.
+* Note that **this code is not very efficient and that copying large files would be painfully slow**. We will see later that it is much better to read/write blocks of bytes in a single read operation, or to use buffered streams.
 
 
 
