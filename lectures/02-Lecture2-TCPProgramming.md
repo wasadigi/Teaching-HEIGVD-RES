@@ -115,7 +115,7 @@ What the client does…
 
 The details of the syntax depend on the programming language used to implement the client and/or the server. As mentioned before, the Socket API is available in pretty much every programming language. Here are some pointers to API documentations that you will get you started:
 
-* [Java](http://docs.oracle.com/javase/7/docs/api/java/net/package-summary.html)
+* [Java](https://docs.oracle.com/javase/9/docs/api/java/net/package-summary.html)
 * [C](http://beej.us/guide/bgnet/output/html/multipage/index.html) This is a great guide, which will provide you all the information you need to write client-server applications in C. Check it out!
 * [python](http://docs.python.org/2/library/socket.html)
 * [Node.js](http://nodejs.org/api/net.html)
